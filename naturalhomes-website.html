@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Homes HN - Bienes Raíces en Honduras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d5016;
+            --primary-light: #4a7c2a;
+            --primary-dark: #1a3009;
+            --accent: #c49956;
+            --accent-light: #d4b078;
+            --dark: #1a1a1a;
+            --light: #f8f6f3;
+            --white: #ffffff;
+            --gray: #5a5a5a;
+            --gray-light: #e8e6e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-light);
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            padding: 0.8rem 1.8rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(45, 80, 22, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%232d5016;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%234a7c2a;stop-opacity:0.05"/></linearGradient></defs><circle cx="800" cy="200" r="300" fill="url(%23g)"/><circle cx="900" cy="700" r="400" fill="url(%23g)"/></svg>') no-repeat center;
+            background-size: cover;
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn-primary {
+            padding: 1.2rem 2.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Search Bar */
+        .search-section {
+            background: var(--white);
+            padding: 4rem 2rem;
+            position: relative;
+            margin-top: -50px;
+            z-index: 10;
+        }
+
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-tab {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--gray);
+        }
+
+        .search-tab.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .form-group select,
+        .form-group input {
+            padding: 0.9rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-btn {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .search-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Properties Section */
+        .properties {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .properties-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .properties-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .view-all {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .view-all:hover {
+            gap: 1rem;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .property-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .property-content {
+            padding: 1.5rem;
+        }
+
+        .property-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .property-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .property-location {
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .property-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-input {
+            flex: 1;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .properties-grid,
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide-up {
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🏡</div>
+                Natural Homes HN
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#propiedades">Propiedades</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="contact-btn">Contáctanos</button>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Encuentra tu hogar perfecto en Honduras</h1>
+            <p class="hero-subtitle">Especialistas en bienes raíces con las mejores propiedades para venta y alquiler. Tu sueño de hogar empieza aquí.</p>
+            <div class="hero-cta">
+                <a href="#propiedades" class="btn-primary">Ver Propiedades</a>
+                <a href="#contacto" class="btn-secondary">Contáctanos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-tabs">
+                <button class="search-tab active">Comprar</button>
+                <button class="search-tab">Alquilar</button>
+                <button class="search-tab">Vender</button>
+            </div>
+            <form class="search-form">
+                <div class="form-group">
+                    <label>Tipo de Propiedad</label>
+                    <select>
+                        <option>Casa</option>
+                        <option>Apartamento</option>
+                        <option>Terreno</option>
+                        <option>Local Comercial</option>
+                        <option>Casa de Campo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Ubicación</label>
+                    <select>
+                        <option>Tegucigalpa</option>
+                        <option>San Pedro Sula</option>
+                        <option>La Ceiba</option>
+                        <option>Roatán</option>
+                        <option>Comayagua</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Precio Máximo</label>
+                    <input type="text" placeholder="L. 5,000,000">
+                </div>
+                <div class="form-group">
+                    <label>Habitaciones</label>
+                    <select>
+                        <option>1+</option>
+                        <option>2+</option>
+                        <option>3+</option>
+                        <option>4+</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-btn">Buscar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="servicios">
+        <div class="features-container">
+            <h2 class="section-title">¿Por qué elegir Natural Homes HN?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Experiencia Comprobada</h3>
+                    <p>Años de experiencia en el mercado inmobiliario hondureño, conociendo cada rincón del país.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Asesoría Personalizada</h3>
+                    <p>Te acompañamos en cada paso del proceso, desde la búsqueda hasta el cierre de la operación.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Amplio Portafolio</h3>
+                    <p>Propiedades en las mejores zonas de Honduras: casas, apartamentos, terrenos y más.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Asesoría Legal</h3>
+                    <p>Respaldo legal completo para que tu inversión sea segura y transparente.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Tecnología Avanzada</h3>
+                    <p>Plataforma digital moderna para buscar y comparar propiedades fácilmente.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Atención de Calidad</h3>
+                    <p>Servicio al cliente excepcional que garantiza tu satisfacción en todo momento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties" id="propiedades">
+        <div class="properties-container">
+            <div class="properties-header">
+                <h2 class="section-title">Propiedades Destacadas</h2>
+                <a href="#" class="view-all">Ver todas →</a>
+            </div>
+            <div class="properties-grid">
+                <!-- Property 1 -->
+                <div class="property-card">
+                    <div style="position: relative;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect fill='%234a7c2a' width='400' height='280'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='white'%3ECasa Moderna Tegucigalpa%3C/text%3E%3C/svg%3E" alt="Casa Moderna" class="property-image">
+                        <span class="property-badge">En Venta</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">L. 4,500,000</div>
+                        <h3 class="property-title">Casa Moderna en Lomas del Guijarro</h3>
+                        <div class="property-location">
+                            📍 Tegucigalpa, Francisco Morazán
+                        </div>
+                        <div class="property-features">
+                            <span class="property-feature">🛏️ 4 Hab</span>
+                            <span class="property-feature">🚿 3 Baños</span>
+                            <span class="property-feature">📐 250 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="property-card">
+                    <div style="position: relative;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect fill='%232d5016' width='400' height='280'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='white'%3EApartamento Vista Mar%3C/text%3E%3C/svg%3E" alt="Apartamento" class="property-image">
+                        <span class="property-badge">Alquiler</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">L. 15,000/mes</div>
+                        <h3 class="property-title">Apartamento Exclusivo Torre Morazán</h3>
+                        <div class="property-location">
+                            📍 Tegucigalpa, Centro
+                        </div>
+                        <div class="property-features">
+                            <span class="property-feature">🛏️ 3 Hab</span>
+                            <span class="property-feature">🚿 2 Baños</span>
+                            <span class="property-feature">📐 120 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="property-card">
+                    <div style="position: relative;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect fill='%23c49956' width='400' height='280'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='white'%3ECasa de Campo%3C/text%3E%3C/svg%3E" alt="Casa de Campo" class="property-image">
+                        <span class="property-badge">En Venta</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">L. 3,200,000</div>
+                        <h3 class="property-title">Casa de Campo Valle de Ángeles</h3>
+                        <div class="property-location">
+                            📍 Valle de Ángeles, Francisco Morazán
+                        </div>
+                        <div class="property-features">
+                            <span class="property-feature">🛏️ 3 Hab</span>
+                            <span class="property-feature">🚿 2 Baños</span>
+                            <span class="property-feature">📐 8,000 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 4 -->
+                <div class="property-card">
+                    <div style="position: relative;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect fill='%231a3009' width='400' height='280'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='white'%3ETerreno Residencial%3C/text%3E%3C/svg%3E" alt="Terreno" class="property-image">
+                        <span class="property-badge">En Venta</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">L. 2,800,000</div>
+                        <h3 class="property-title">Terreno Residencial El Pedregal</h3>
+                        <div class="property-location">
+                            📍 Tegucigalpa, Francisco Morazán
+                        </div>
+                        <div class="property-features">
+                            <span class="property-feature">📐 600 m²</span>
+                            <span class="property-feature">🏗️ Plano</span>
+                            <span class="property-feature">🔒 Privado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="property-card">
+                    <div style="position: relative;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect fill='%234a7c2a' width='400' height='280'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='white'%3ELocal Comercial%3C/text%3E%3C/svg%3E" alt="Local Comercial" class="property-image">
+                        <span class="property-badge">Alquiler</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">L. 35,000/mes</div>
+                        <h3 class="property-title">Local Comercial Multiplaza</h3>
+                        <div class="property-location">
+                            📍 Tegucigalpa, Zona Comercial
+                        </div>
+                        <div class="property-features">
+                            <span class="property-feature">📐 180 m²</span>
+                            <span class="property-feature">🚗 3 Estac.</span>
+                            <span class="property-feature">💼 Oficina</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 6 -->
+                <div class="property-card">
+                    <div style="position: relative;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect fill='%23d4b078' width='400' height='280'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='white'%3EVilla Exclusiva%3C/text%3E%3C/svg%3E" alt="Villa" class="property-image">
+                        <span class="property-badge">En Venta</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">L. 8,500,000</div>
+                        <h3 class="property-title">Villa de Lujo con Piscina</h3>
+                        <div class="property-location">
+                            📍 Lomas del Guijarro Sur
+                        </div>
+                        <div class="property-features">
+                            <span class="property-feature">🛏️ 5 Hab</span>
+                            <span class="property-feature">🚿 4 Baños</span>
+                            <span class="property-feature">📐 450 m²</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Propiedades Vendidas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1,200+</div>
+                <div class="stat-label">Clientes Satisfechos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Tasa de Satisfacción</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="nosotros">
+        <div class="testimonials-container">
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Excelente servicio, me ayudaron a encontrar la casa perfecta para mi familia. El equipo fue muy profesional y atento durante todo el proceso."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Compra de Casa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"La mejor decisión fue confiar en Natural Homes HN. Vendí mi propiedad en tiempo récord y a un excelente precio. Totalmente recomendados."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <h4>Carlos Méndez</h4>
+                            <p>Venta de Apartamento</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Profesionales de primer nivel. Me asesoraron en la compra de mi terreno y todo el proceso legal fue impecable. Muy satisfecha con el servicio."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Ana Rodríguez</h4>
+                            <p>Compra de Terreno</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contacto">
+        <div class="cta-container">
+            <h2>¿Listo para encontrar tu hogar ideal?</h2>
+            <p>Regístrate para recibir las mejores ofertas y novedades de propiedades en Honduras</p>
+            <form class="cta-form">
+                <input type="email" class="cta-input" placeholder="Tu correo electrónico">
+                <button type="submit" class="cta-button">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Natural Homes HN</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                    Tu aliado de confianza en bienes raíces. Ayudamos a familias hondureñas a encontrar el hogar de sus sueños.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/naturalhomeshn/" class="social-link" target="_blank">📷</a>
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📱</a>
+                    <a href="#" class="social-link">✉️</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="#">Compra de Propiedades</a></li>
+                    <li><a href="#">Venta de Inmuebles</a></li>
+                    <li><a href="#">Alquiler</a></li>
+                    <li><a href="#">Asesoría Legal</a></li>
+                    <li><a href="#">Valuación</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Enlaces</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#propiedades">Propiedades</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📍 Tegucigalpa, Honduras</li>
+                    <li>📞 +504 9999-9999</li>
+                    <li>✉️ info@naturalhomeshn.com</li>
+                    <li>🕒 Lun - Vie: 8:00 - 17:00</li>
+                    <li>🕒 Sáb: 9:00 - 13:00</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Natural Homes HN. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Search tabs
+        document.querySelectorAll('.search-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.property-card, .feature-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
