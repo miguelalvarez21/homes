@@ -30,7 +30,8 @@
         body {
             font-family: 'DM Sans', sans-serif;
             color: var(--dark);
-            background: var(--white);
+            line-height: 1.6;
+            background-color: var(--white);
             overflow-x: hidden;
         }
 
@@ -43,13 +44,8 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
+            transition: all 0.3s ease;
             border-bottom: 1px solid var(--gray-light);
-            animation: slideDown 0.6s ease;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
         }
 
         .nav-container {
@@ -69,6 +65,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-decoration: none;
         }
 
         .logo-icon {
@@ -112,10 +109,6 @@
             width: 100%;
         }
 
-        .nav-menu a:hover {
-            color: var(--primary);
-        }
-
         .contact-btn {
             padding: 0.8rem 1.8rem;
             background: var(--primary);
@@ -125,132 +118,86 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
         }
 
         .contact-btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(45, 80, 22, 0.3);
+            box-shadow: 0 5px 15px rgba(45, 80, 22, 0.2);
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
             height: 90vh;
             position: relative;
             display: flex;
             align-items: center;
-            overflow: hidden;
+            padding-top: 80px;
             background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+            overflow: hidden;
         }
 
-        .hero-bg {
+        .hero::before {
+            content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%232d5016;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%234a7c2a;stop-opacity:0.05"/></linearGradient></defs><circle cx="800" cy="200" r="300" fill="url(%23g)"/><circle cx="900" cy="700" r="400" fill="url(%23g)"/></svg>') no-repeat center;
-            background-size: cover;
-            opacity: 0.4;
+            top: -10%;
+            right: -5%;
+            width: 50%;
+            height: 120%;
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80') center/cover;
+            border-radius: 40px;
+            transform: rotate(-5deg);
+            opacity: 0.9;
+            z-index: 0;
         }
 
         .hero-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
+            width: 100%;
+            position: relative;
             z-index: 1;
-            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(196, 153, 86, 0.1);
+            color: var(--accent);
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4.5rem;
-            font-weight: 800;
             color: var(--primary);
             line-height: 1.1;
             margin-bottom: 1.5rem;
             max-width: 700px;
         }
 
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            animation: fadeInUp 0.8s ease 0.6s both;
-        }
-
-        .btn-primary {
-            padding: 1.2rem 2.5rem;
-            background: var(--primary);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.3);
-        }
-
-        .btn-secondary {
-            padding: 1.2rem 2.5rem;
-            background: transparent;
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: 2px solid var(--primary);
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* Search Bar */
+        /* Search Section (Nuevo Estilo Reemplazado) */
         .search-section {
-            background: var(--white);
-            padding: 4rem 2rem;
+            padding: 0 2rem;
             position: relative;
-            margin-top: -50px;
             z-index: 10;
+            margin-top: -60px;
         }
 
         .search-container {
             max-width: 1200px;
             margin: 0 auto;
             background: var(--white);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
         }
 
         .search-tabs {
@@ -261,13 +208,13 @@
 
         .search-tab {
             padding: 0.8rem 2rem;
-            background: transparent;
+            background: var(--light);
             border: none;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
             color: var(--gray);
+            transition: all 0.3s;
         }
 
         .search-tab.active {
@@ -278,68 +225,50 @@
         .search-form {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            align-items: end;
+            gap: 1.5rem;
+            align-items: flex-end;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .form-group label {
             font-weight: 600;
-            color: var(--dark);
             font-size: 0.9rem;
+            color: var(--primary);
         }
 
-        .form-group select,
-        .form-group input {
-            padding: 0.9rem;
+        .form-group select, .form-group input {
+            padding: 1rem;
             border: 1px solid var(--gray-light);
-            border-radius: 10px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            transition: border 0.3s;
+            border-radius: 12px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
         }
 
-        .form-group select:focus,
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
+        .form-group select:focus, .form-group input:focus {
+            border-color: var(--accent);
         }
 
         .search-btn {
-            padding: 1rem 2rem;
+            padding: 1rem;
             background: var(--accent);
             color: var(--white);
             border: none;
-            border-radius: 10px;
-            font-weight: 600;
+            border-radius: 12px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 1rem;
         }
 
         .search-btn:hover {
-            background: var(--primary);
+            background: var(--accent-light);
             transform: translateY(-2px);
         }
-
-        /* No Results Message */
-        .no-results {
-            text-align: center;
-            padding: 3rem 2rem;
-            color: var(--gray);
-        }
-
-        .no-results h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
         /* Features Section */
         .features {
             padding: 5rem 2rem;
@@ -404,177 +333,182 @@
             line-height: 1.6;
         }
 
-        /* Properties Section */
+        /* Properties Grid Section */
         .properties {
-            padding: 5rem 2rem;
+            padding: 8rem 2rem;
             background: var(--white);
         }
 
-        .properties-container {
+        .section-header {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 0 auto 4rem;
+            text-align: center;
         }
 
-        .properties-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
-
-        .view-all {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s;
-        }
-
-        .view-all:hover {
-            gap: 1rem;
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
 
         .properties-grid {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            /* ¡Aquí está la magia! Cambiamos auto-fit por auto-fill */
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+            /* Opcional: Esto alinea las tarjetas a la izquierda si sobran espacios */
+            justify-content: start; 
         }
 
+        /* Property Card (Estilo Dinámico) */
         .property-card {
             background: var(--white);
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            border: 1px solid var(--gray-light);
         }
-
+        /* Cuando la tarjeta es el único resultado de la búsqueda */
+        .property-card:only-child {
+            grid-column: 1 / -1;   /* Le dice que cruce todas las columnas invisibles */
+            justify-self: center;  /* La centra horizontalmente */
+            width: 100%;           
+            max-width: 450px;      /* Evita que se estire como chicle */
+        }
         .property-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
         }
 
-        /* IMAGE SLIDER STYLES */
         .image-slider {
             position: relative;
+            height: 300px;
             overflow: hidden;
-            width: 100%;
-            height: 280px;
-        }
-
-        .slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
         }
 
         .property-image {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 280px;
+            height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.6s ease-in-out;
+            cursor: pointer;
         }
 
         .property-image.active {
             opacity: 1;
-            z-index: 1;
         }
 
-        .prev-slide,
-        .next-slide {
+        .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
+            background: rgba(255, 255, 255, 0.9);
             border: none;
-            font-size: 24px;
-            padding: 10px 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             cursor: pointer;
             z-index: 10;
-            transition: background 0.3s;
-            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
         }
 
-        .prev-slide:hover,
-        .next-slide:hover {
-            background: rgba(0, 0, 0, 0.8);
+        .slider-btn:hover {
+            background: var(--white);
+            color: var(--accent);
         }
 
-        .prev-slide {
-            left: 10px;
-        }
-
-        .next-slide {
-            right: 10px;
-        }
+        .prev-slide { left: 15px; }
+        .next-slide { right: 15px; }
 
         .property-badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: var(--accent);
-            color: var(--white);
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--white);
+            color: var(--primary);
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            z-index: 20;
+            font-weight: 700;
+            font-size: 0.8rem;
+            z-index: 5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .property-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .property-price {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
             color: var(--primary);
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         .property-title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: var(--dark);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .property-title:hover {
+            color: var(--accent);
         }
 
         .property-location {
-            color: var(--gray);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .property-features {
             display: flex;
-            gap: 1.5rem;
-            padding-top: 1rem;
+            justify-content: space-between;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--gray-light);
         }
 
-        .property-feature {
+        .feature {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--gray);
             font-size: 0.9rem;
+            color: var(--gray);
         }
 
-        .property-card.hidden {
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 4rem;
             display: none;
         }
 
-        /* Stats Section */
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 5rem 2rem;
+        }
+         /* Stats Section */
         .stats {
             padding: 5rem 2rem;
             background: var(--primary);
@@ -895,41 +829,38 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+
     <header class="header">
         <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">🏡</div>
+            <a href="#" class="logo">
+                <div class="logo-icon">NH</div>
                 Natural Homes HN
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#propiedades">Propiedades</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-            <button class="contact-btn">Contáctanos</button>
-            <button class="mobile-menu-btn">☰</button>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#propiedades">Propiedades</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="contact-btn">Publicar Propiedad</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="inicio">
-        <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>Encuentra tu hogar perfecto en Honduras</h1>
-            <p class="hero-subtitle">Especialistas en bienes raíces con las mejores propiedades para venta y alquiler. Tu sueño de hogar empieza aquí.</p>
-            <div class="hero-cta">
-                <a href="#propiedades" class="btn-primary">Ver Propiedades</a>
-                <a href="#contacto" class="btn-secondary">Contáctanos</a>
+            <span class="hero-badge">Expertos en Bienes Raíces</span>
+            <h1>Encuentra el hogar donde tu vida florece</h1>
+            <p style="font-size: 1.2rem; color: var(--gray); max-width: 600px; margin-bottom: 2.5rem;">
+                Ofrecemos una selección curada de las propiedades más exclusivas en Honduras, desde casas vehiculares hasta apartamentos de lujo.
+            </p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="#propiedades" class="contact-btn" style="padding: 1.2rem 2.5rem;">Ver Catálogo</a>
+                <a href="#contacto" class="contact-btn" style="background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 1.2rem 2.5rem;">Asesoría Gratis</a>
             </div>
         </div>
     </section>
 
-    <!-- Search Section -->
     <section class="search-section">
         <div class="search-container">
             <div class="search-tabs">
@@ -939,53 +870,36 @@
             </div>
             <form class="search-form" id="searchForm">
                 <div class="form-group">
-                    <label>Tipo de Propiedad</label>
+                    <label>Tipo de Inmueble</label>
                     <select id="propertyType">
-                        <option value="">Todos</option>
+                        <option value="">Cualquier tipo</option>
                         <option value="Casa">Casa</option>
                         <option value="Apartamento">Apartamento</option>
                         <option value="Terreno">Terreno</option>
-                        <option value="Local Comercial">Local Comercial</option>
-                        <option value="Casa de Campo">Casa de Campo</option>
-                        <option value="Villa">Villa</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Ubicación</label>
                     <select id="location">
-                        <option value="">Todas</option>
+                        <option value="">Todas las ciudades</option>
                         <option value="Tegucigalpa">Tegucigalpa</option>
-                        <option value="San Pedro Sula">San Pedro Sula</option>
-                        <option value="La Ceiba">La Ceiba</option>
-                        <option value="Roatán">Roatán</option>
-                        <option value="Comayagua">Comayagua</option>
-                        <option value="Valle de Ángeles">Valle de Ángeles</option>
+                        <option value="Valle de Angeles">Valle de Ángeles</option>
+                        <option value="Tatumbla">Tatumbla</option>
+                        <option value="Concepcion">Concepción</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Precio Máximo</label>
-                    <input type="text" id="maxPrice" placeholder="L. 5,000,000">
+                    <label>Presupuesto Máximo (L.)</label>
+                    <input type="number" id="maxPrice" placeholder="Ej: 3000000">
                 </div>
-                <div class="form-group">
-                    <label>Habitaciones</label>
-                    <select id="bedrooms">
-                        <option value="">Todas</option>
-                        <option value="1">1+</option>
-                        <option value="2">2+</option>
-                        <option value="3">3+</option>
-                        <option value="4">4+</option>
-                        <option value="5">5+</option>
-                    </select>
-                </div>
-                <button type="submit" class="search-btn">Buscar</button>
+                <button type="submit" class="search-btn">Buscar Propiedades</button>
             </form>
         </div>
     </section>
-
     <!-- Features Section -->
     <section class="features" id="servicios">
         <div class="features-container">
-            <h2 class="section-title">¿Por qué elegir Natural Homes HN?</h2>
+            <h2 class="section-title">Nuestros Servicios Profesionales</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🏆</div>
@@ -1020,161 +934,20 @@
             </div>
         </div>
     </section>
-
-    <!-- Properties Section -->
     <section class="properties" id="propiedades">
-        <div class="properties-container">
-            <div class="properties-header">
-                <h2 class="section-title">Propiedades Destacadas</h2>
-                <a href="#" class="view-all">Ver todas →</a>
+        <div class="section-header">
+            <h2>Propiedades Destacadas</h2>
+            <p style="color: var(--gray);">Explora las mejores oportunidades de inversión en el mercado actual.</p>
+        </div>
+        
+        <div class="properties-grid" id="propertiesGrid">
             </div>
-            <div class="properties-grid" id="propertiesGrid">
-                <!-- Property 1 - CON SLIDER -->
-                <div class="property-card" data-type="sale" data-property-type="Casa" data-location="Tegucigalpa" data-bedrooms="7" data-price="5000000">
-                    <div class="image-slider">
-                        <div class="slides">
-                            <img src="img/imagen1-1.jpg" alt="Casa Moderna" class="property-image active">
-                            <img src="img/imagen1-2.jpg" alt="Casa Moderna" class="property-image">
-                            <img src="img/imagen1-3.jpg" alt="Casa Moderna" class="property-image">
-                            <img src="img/imagen1-4.jpg" alt="Casa Moderna" class="property-image">
-                            <img src="img/imagen1-5.jpg" alt="Casa Moderna" class="property-image">
-                        </div>
-                        <button class="prev-slide">‹</button>
-                        <button class="next-slide">›</button>
-                        <span class="property-badge">En Venta</span>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">L. 5,000,000</div>
-                        <h3 class="property-title">Casa Vehicular en Col. Kennedy</h3>
-                        <div class="property-location">
-                            📍 Tegucigalpa, Francisco Morazán
-                        </div>
-                        <div class="property-features">
-                            <span class="property-feature">🛏️ 7 Hab</span>
-                            <span class="property-feature">🚿 4 Baños</span>
-                            <span class="property-feature">📐 250 m²</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Property 2 - CON SLIDER -->
-                <div class="property-card" data-type="rent" data-property-type="Apartamento" data-location="Tegucigalpa" data-bedrooms="1" data-price="18500">
-                    <div class="image-slider">
-                        <div class="slides">
-                            <img src="img/imagen2-1.jpeg" alt="Apartamento" class="property-image active">
-                            <img src="img/imagen2-2.jpeg" alt="Apartamento" class="property-image">
-                            <img src="img/imagen2-3.jpeg" alt="Apartamento" class="property-image">
-                            <img src="img/imagen2-4.jpeg" alt="Apartamento" class="property-image">
-                            <img src="img/imagen2-5.jpeg" alt="Apartamento" class="property-image">
-                            <img src="img/imagen2-6.jpeg" alt="Apartamento" class="property-image">
-                            <img src="img/imagen2-7.jpeg" alt="Apartamento" class="property-image">
-                            <img src="img/imagen2-8.jpeg" alt="Apartamento" class="property-image">
-                        </div>
-                        <button class="prev-slide">‹</button>
-                        <button class="next-slide">›</button>
-                        <span class="property-badge">Alquiler</span>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">$ 700/mes</div>
-                        <h3 class="property-title">Apartamento Exclusivo</h3>
-                        <div class="property-location">
-                            📍 Col Tepeyac, Tegucigalpa 
-                        </div>
-                        <div class="property-features">
-                            <span class="property-feature">🛏️ 1 Hab</span>
-                            <span class="property-feature">🚿 1 Baño</span>
-                            <span class="property-feature">📐 60 m²</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 3 -->
-                <div class="property-card" data-type="rent" data-property-type="Apartamento" data-location="Tegucigalpa" data-bedrooms="1" data-price="18500">
-                    <div style="position: relative; height: 280px;">
-                        <img src="img/imagen3.jpg" alt="Apartamento" class="property-image active">
-                        <span class="property-badge">Alquiler</span>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">$ 700/mes</div>
-                        <h3 class="property-title">Apartamento en Cipreses</h3>
-                        <div class="property-location">
-                            📍 San Ignacio, Tegucigalpa
-                        </div>
-                        <div class="property-features">
-                            <span class="property-feature">🛏️ 1 Hab</span>
-                            <span class="property-feature">🚿 1 Baño</span>
-                            <span class="property-feature">📐 50 m²</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 4 -->
-                <div class="property-card" data-type="sale" data-property-type="Terreno" data-location="Tegucigalpa" data-bedrooms="0" data-price="2800000">
-                    <div style="position: relative; height: 280px;">
-                        <img src="img/imagen4.jpg" alt="Terreno" class="property-image active">
-                        <span class="property-badge">En Venta</span>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">L. 2,800,000</div>
-                        <h3 class="property-title">Terreno Residencial El Pedregal</h3>
-                        <div class="property-location">
-                            📍 Tegucigalpa, Francisco Morazán
-                        </div>
-                        <div class="property-features">
-                            <span class="property-feature">📐 600 m²</span>
-                            <span class="property-feature">🏗️ Plano</span>
-                            <span class="property-feature">🔒 Privado</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 5 -->
-                <div class="property-card" data-type="rent" data-property-type="Local Comercial" data-location="Tegucigalpa" data-bedrooms="0" data-price="35000">
-                    <div style="position: relative; height: 280px;">
-                        <img src="img/imagen5.jpg" alt="Local Comercial" class="property-image active">
-                        <span class="property-badge">Alquiler</span>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">L. 35,000/mes</div>
-                        <h3 class="property-title">Local Comercial Multiplaza</h3>
-                        <div class="property-location">
-                            📍 Tegucigalpa, Zona Comercial
-                        </div>
-                        <div class="property-features">
-                            <span class="property-feature">📐 180 m²</span>
-                            <span class="property-feature">🚗 3 Estac.</span>
-                            <span class="property-feature">💼 Oficina</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 6 -->
-                <div class="property-card" data-type="sale" data-property-type="Villa" data-location="Tegucigalpa" data-bedrooms="5" data-price="8500000">
-                    <div style="position: relative; height: 280px;">
-                        <img src="img/imagen6.jpg" alt="Villa" class="property-image active">
-                        <span class="property-badge">En Venta</span>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">L. 8,500,000</div>
-                        <h3 class="property-title">Villa de Lujo con Piscina</h3>
-                        <div class="property-location">
-                            📍 Lomas del Guijarro Sur
-                        </div>
-                        <div class="property-features">
-                            <span class="property-feature">🛏️ 5 Hab</span>
-                            <span class="property-feature">🚿 4 Baños</span>
-                            <span class="property-feature">📐 450 m²</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="noResults" class="no-results" style="display: none;">
-                <h3>No se encontraron propiedades</h3>
-                <p>Intenta ajustar tus criterios de búsqueda</p>
-            </div>
+        <div id="noResults" class="no-results">
+            <h3 style="font-size: 2rem; color: var(--primary);">Sin resultados</h3>
+            <p>Prueba ajustando los filtros de búsqueda.</p>
         </div>
     </section>
-
     <!-- Stats Section -->
     <section class="stats">
         <div class="stats-container">
@@ -1244,11 +1017,14 @@
     <!-- CTA Section -->
     <section class="cta" id="contacto">
         <div class="cta-container">
-            <h2>¿Listo para encontrar tu hogar ideal?</h2>
-            <p>Regístrate para recibir las mejores ofertas y novedades de propiedades en Honduras</p>
-            <form class="cta-form">
-                <input type="email" class="cta-input" placeholder="Tu correo electrónico">
-                <button type="submit" class="cta-button">Suscribirse</button>
+            <h2>Contáctanos Hoy</h2>
+            <p>Estamos listos para ayudarte a dar el siguiente paso en tu inversión.</p>
+            <form action="https://formspree.io/f/mpqonaav" method="POST"class="cta-form" style="display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 500px;">
+                <input type="text" class="cta-input" placeholder="Nombre completo" required>
+                <input type="tel" class="cta-input" placeholder="Teléfono / WhatsApp" required>
+                <input type="email" class="cta-input" placeholder="Correo electrónico" required>
+                <textarea class="cta-input" placeholder="¿En qué propiedad estás interesado?" style="border-radius: 20px; min-height: 100px; padding: 1.2rem; font-family: inherit;"></textarea>
+                <button type="submit" class="cta-button">Enviar Mensaje</button>
             </form>
         </div>
     </section>
@@ -1303,222 +1079,144 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2026 Natural Homes HN. Todos los derechos reservados.</p>
+    <footer class="footer">
+        <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+            <p>&copy; 2026 Natural Homes HN. Conectando hogares con corazones.</p>
         </div>
     </footer>
 
+    <script src="propiedades.js"></script>
+
     <script>
-        // ==================== SLIDER DE IMÁGENES ====================
-        document.addEventListener('DOMContentLoaded', function() {
-            const sliders = document.querySelectorAll('.image-slider');
-            
-            sliders.forEach(slider => {
-                const slides = slider.querySelectorAll('.property-image');
-                const prevBtn = slider.querySelector('.prev-slide');
-                const nextBtn = slider.querySelector('.next-slide');
-                let currentSlide = 0;
-                let autoSlideInterval;
-                
-                // Función para mostrar slide específico
-                function showSlide(index) {
-                    slides.forEach(slide => slide.classList.remove('active'));
-                    slides[index].classList.add('active');
-                }
-                
-                // Función para siguiente slide
-                function nextSlide() {
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    showSlide(currentSlide);
-                }
-                
-                // Función para slide anterior
-                function prevSlide() {
-                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                    showSlide(currentSlide);
-                }
-                
-                // Iniciar auto-slide cada 5 segundos
-                function startAutoSlide() {
-                    autoSlideInterval = setInterval(nextSlide, 5000);
-                }
-                
-                // Detener auto-slide
-                function stopAutoSlide() {
-                    clearInterval(autoSlideInterval);
-                }
-                
-                // Event listeners para los botones
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', () => {
-                        stopAutoSlide();
-                        nextSlide();
-                        startAutoSlide();
-                    });
-                }
-                
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', () => {
-                        stopAutoSlide();
-                        prevSlide();
-                        startAutoSlide();
-                    });
-                }
-                
-                // Pausar auto-slide al pasar el mouse
-                slider.addEventListener('mouseenter', stopAutoSlide);
-                slider.addEventListener('mouseleave', startAutoSlide);
-                
-                // Iniciar el auto-slide
-                startAutoSlide();
-            });
-        });
+        let currentTypeFilter = 'all';
 
-        // ==================== BÚSQUEDA Y FILTROS ====================
-        const properties = document.querySelectorAll('.property-card');
-        const searchForm = document.getElementById('searchForm');
-        const propertyTypeSelect = document.getElementById('propertyType');
-        const locationSelect = document.getElementById('location');
-        const maxPriceInput = document.getElementById('maxPrice');
-        const bedroomsSelect = document.getElementById('bedrooms');
-        const searchTabs = document.querySelectorAll('.search-tab');
-        const propertiesGrid = document.getElementById('propertiesGrid');
-        const noResults = document.getElementById('noResults');
+        // RENDERIZADO DINÁMICO
+        function renderizar(lista = MIS_PROPIEDADES) {
+            const grid = document.getElementById('propertiesGrid');
+            const noResults = document.getElementById('noResults');
+            grid.innerHTML = "";
 
-        let currentFilter = 'all';
-
-        // Agregar evento a los tabs
-        searchTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                searchTabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.getAttribute('data-type');
-                filterProperties();
-            });
-        });
-
-        // Función para filtrar propiedades
-        function filterProperties() {
-            let visibleCount = 0;
-
-            properties.forEach(property => {
-                let shouldShow = true;
-
-                // Filtro por tipo (Comprar/Alquilar)
-                if (currentFilter !== 'all' && property.getAttribute('data-type') !== currentFilter) {
-                    shouldShow = false;
-                }
-
-                // Filtro por tipo de propiedad
-                const propertyType = propertyTypeSelect.value;
-                if (propertyType && property.getAttribute('data-property-type') !== propertyType) {
-                    shouldShow = false;
-                }
-
-                // Filtro por ubicación
-                const location = locationSelect.value;
-                if (location && !property.getAttribute('data-location').includes(location)) {
-                    shouldShow = false;
-                }
-
-                // Filtro por precio máximo
-                const maxPrice = maxPriceInput.value;
-                if (maxPrice) {
-                    const priceValue = parseInt(maxPrice.replace(/\D/g, ''));
-                    const propertyPrice = parseInt(property.getAttribute('data-price'));
-                    if (propertyPrice > priceValue) {
-                        shouldShow = false;
-                    }
-                }
-
-                // Filtro por habitaciones
-                const bedrooms = bedroomsSelect.value;
-                if (bedrooms) {
-                    const propertyBedrooms = parseInt(property.getAttribute('data-bedrooms'));
-                    if (propertyBedrooms < parseInt(bedrooms)) {
-                        shouldShow = false;
-                    }
-                }
-
-                // Mostrar u ocultar propiedad
-                if (shouldShow) {
-                    property.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    property.classList.add('hidden');
-                }
-            });
-
-            // Mostrar mensaje si no hay resultados
-            if (visibleCount === 0) {
+            if (lista.length === 0) {
                 noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
+                return;
             }
+            noResults.style.display = 'none';
+
+            lista.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'property-card';
+                
+                const imgsHTML = p.images.map((img, i) => 
+                    `<img src="${img}" class="property-image ${i === 0 ? 'active' : ''}" 
+                          onclick="window.location.href='${p.url}'">`
+                ).join('');
+
+                card.innerHTML = `
+                    <div class="image-slider">
+                        <div class="slides">${imgsHTML}</div>
+                        ${p.images.length > 1 ? `
+                            <button class="slider-btn prev-slide">‹</button>
+                            <button class="slider-btn next-slide">›</button>
+                        ` : ''}
+                        <span class="property-badge">${p.badge}</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">${p.priceTag}</div>
+                        <h3 class="property-title" onclick="window.location.href='${p.url}'">${p.title}</h3>
+                        <div class="property-location">📍 ${p.location}</div>
+                        <div class="property-features">
+                            ${p.bedrooms ? `<div class="feature">🛏️ ${p.bedrooms} Hab</div>` : ''}
+                            ${p.area ? `<div class="feature">📐 ${p.area} m²</div>` : ''}
+                            <div class="feature">🏠 ${p.propertyType}</div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            inicializarSliders();
+            activarAnimacionScroll(); // Llama a tu función de animaciones
         }
 
-        // Event listeners para los campos de búsqueda
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            filterProperties();
-            document.getElementById('propiedades').scrollIntoView({ behavior: 'smooth' });
-        });
+        // SLIDERS
+        function inicializarSliders() {
+            document.querySelectorAll('.image-slider').forEach(slider => {
+                const slides = slider.querySelectorAll('.property-image');
+                if (slides.length <= 1) return;
 
-        propertyTypeSelect.addEventListener('change', filterProperties);
-        locationSelect.addEventListener('change', filterProperties);
-        maxPriceInput.addEventListener('input', filterProperties);
-        bedroomsSelect.addEventListener('change', filterProperties);
+                let idx = 0;
+                slider.querySelector('.next-slide').onclick = (e) => {
+                    e.stopPropagation();
+                    slides[idx].classList.remove('active');
+                    idx = (idx + 1) % slides.length;
+                    slides[idx].classList.add('active');
+                };
+                slider.querySelector('.prev-slide').onclick = (e) => {
+                    e.stopPropagation();
+                    slides[idx].classList.remove('active');
+                    idx = (idx - 1 + slides.length) % slides.length;
+                    slides[idx].classList.add('active');
+                };
+            });
+        }
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        // FILTROS
+        function aplicarFiltros() {
+            const pType = document.getElementById('propertyType').value;
+            const loc = document.getElementById('location').value;
+            const price = document.getElementById('maxPrice').value;
+
+            const filtradas = MIS_PROPIEDADES.filter(p => {
+                const matchTab = currentTypeFilter === 'all' || p.type === currentTypeFilter;
+                const matchType = !pType || p.propertyType === pType;
+                const matchLoc = !loc || p.location.includes(loc);
+                const matchPrice = !price || p.price <= parseInt(price);
+                return matchTab && matchType && matchLoc && matchPrice;
+            });
+            renderizar(filtradas);
+        }
+
+        // EVENTOS
+        document.querySelectorAll('.search-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelector('.search-tab.active').classList.remove('active');
+                this.classList.add('active');
+                currentTypeFilter = this.dataset.type;
+                aplicarFiltros();
             });
         });
 
-        // Header scroll effect
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.boxShadow = 'none';
-            }
-            
-            lastScroll = currentScroll;
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+        document.getElementById('searchForm').onsubmit = (e) => {
+            e.preventDefault();
+            aplicarFiltros();
+            document.getElementById('propiedades').scrollIntoView({ behavior: 'smooth' });
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+        // ANIMACIONES AL BAJAR (Tu código original)
+        function activarAnimacionScroll() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
 
-        document.querySelectorAll('.property-card, .feature-card, .testimonial-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
+            document.querySelectorAll('.property-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        }
+
+        // HEADER SCROLL
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            header.style.boxShadow = window.pageYOffset > 50 ? '0 10px 30px rgba(0,0,0,0.08)' : 'none';
         });
+
+        window.onload = () => renderizar();
     </script>
 </body>
 </html>
