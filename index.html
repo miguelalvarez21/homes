@@ -1,1222 +1,1227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natural Homes HN - Bienes Raíces en Honduras</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #2d5016;
-            --primary-light: #4a7c2a;
-            --primary-dark: #1a3009;
-            --accent: #c49956;
-            --accent-light: #d4b078;
-            --dark: #1a1a1a;
-            --light: #f8f6f3;
-            --white: #ffffff;
-            --gray: #5a5a5a;
-            --gray-light: #e8e6e1;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid var(--gray-light);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .contact-btn {
-            padding: 0.8rem 1.8rem;
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-
-        .contact-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(45, 80, 22, 0.2);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 90vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            right: -5%;
-            width: 50%;
-            height: 120%;
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80') center/cover;
-            border-radius: 40px;
-            transform: rotate(-5deg);
-            opacity: 0.9;
-            z-index: 0;
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            background: rgba(196, 153, 86, 0.1);
-            color: var(--accent);
-            border-radius: 50px;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            color: var(--primary);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            max-width: 700px;
-        }
-
-        /* Search Section (Nuevo Estilo Reemplazado) */
-        .search-section {
-            padding: 0 2rem;
-            position: relative;
-            z-index: 10;
-            margin-top: -60px;
-        }
-
-        .search-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-        }
-
-        .search-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .search-tab {
-            padding: 0.8rem 2rem;
-            background: var(--light);
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--gray);
-            transition: all 0.3s;
-        }
-
-        .search-tab.active {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .search-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            align-items: flex-end;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--primary);
-        }
-
-        .form-group select, .form-group input {
-            padding: 1rem;
-            border: 1px solid var(--gray-light);
-            border-radius: 12px;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .form-group select:focus, .form-group input:focus {
-            border-color: var(--accent);
-        }
-
-        .search-btn {
-            padding: 1rem;
-            background: var(--accent);
-            color: var(--white);
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .search-btn:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-        }
-        /* Features Section */
-        .features {
-            padding: 5rem 2rem;
-            background: var(--light);
-        }
-
-        .features-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: var(--white);
-        }
-
-        .feature-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .feature-card p {
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        /* Properties Grid Section */
-        .properties {
-            padding: 8rem 2rem;
-            background: var(--white);
-        }
-
-        .section-header {
-            max-width: 1400px;
-            margin: 0 auto 4rem;
-            text-align: center;
-        }
-
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .properties-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            /* ¡Aquí está la magia! Cambiamos auto-fit por auto-fill */
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2.5rem;
-            /* Opcional: Esto alinea las tarjetas a la izquierda si sobran espacios */
-            justify-content: start; 
-        }
-
-        /* Property Card (Estilo Dinámico) */
-        .property-card {
-            background: var(--white);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            border: 1px solid var(--gray-light);
-        }
-        /* Cuando la tarjeta es el único resultado de la búsqueda */
-        .property-card:only-child {
-            grid-column: 1 / -1;   /* Le dice que cruce todas las columnas invisibles */
-            justify-self: center;  /* La centra horizontalmente */
-            width: 100%;           
-            max-width: 450px;      /* Evita que se estire como chicle */
-        }
-        .property-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .image-slider {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-        }
-
-        .property-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.6s ease-in-out;
-            cursor: pointer;
-        }
-
-        .property-image.active {
-            opacity: 1;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-        }
-
-        .slider-btn:hover {
-            background: var(--white);
-            color: var(--accent);
-        }
-
-        .prev-slide { left: 15px; }
-        .next-slide { right: 15px; }
-
-        .property-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 0.6rem 1.2rem;
-            background: var(--white);
-            color: var(--primary);
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            z-index: 5;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .property-content {
-            padding: 2rem;
-        }
-
-        .property-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .property-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .property-title:hover {
-            color: var(--accent);
-        }
-
-        .property-location {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .property-features {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--gray-light);
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .no-results {
-            text-align: center;
-            grid-column: 1 / -1;
-            padding: 4rem;
-            display: none;
-        }
-
-
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: var(--white);
-            padding: 5rem 2rem;
-        }
-         /* Stats Section */
-        .stats {
-            padding: 5rem 2rem;
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 5rem 2rem;
-            background: var(--light);
-        }
-
-        .testimonials-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .testimonial-stars {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .author-info h4 {
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-
-        .author-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-        }
-
-        .cta-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-        }
-
-        .cta-form {
-            display: flex;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .cta-input {
-            flex: 1;
-            padding: 1.2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-        }
-
-        .cta-button {
-            padding: 1.2rem 2.5rem;
-            background: var(--accent);
-            color: var(--white);
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .cta-button:hover {
-            background: var(--accent-light);
-            transform: scale(1.05);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: var(--white);
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-column h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-column a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-column a:hover {
-            color: var(--white);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .properties-grid,
-            .features-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .search-form {
-                grid-template-columns: 1fr;
-            }
-
-            .cta h2 {
-                font-size: 2rem;
-            }
-
-            .cta-form {
-                flex-direction: column;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 0.6s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .slide-up {
-            animation: slideUp 0.6s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natural Homes HN</title>
+  <meta name="description" content="Natural Homes HN - Bienes raíces en Honduras" />
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
+  <div id="root"></div>
+  <script type="text/babel">
 
-    <header class="header">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">NH</div>
-                Natural Homes HN
+const { useState, useEffect } = React;
+
+const DICT = {
+  es: {
+    nav_home: "Inicio", nav_properties: "Propiedades", nav_about: "Nosotros", nav_services: "Servicios", nav_testimonials: "Testimonios", nav_contact: "Contacto",
+    view_properties: "Ver Propiedades", real_estate_hn: "BIENES RAÍCES EN HONDURAS", hero_title_1: "Encuentra el hogar", hero_title_2: "donde tu vida florece",
+    hero_desc: "Ofrecemos una selección curada de las propiedades más exclusivas en Honduras, desde casas vacacionales hasta apartamentos de lujo.",
+    for_sale: "En Venta", for_rent: "Alquiler", type: "TIPO", location: "UBICACIÓN", budget: "PRESUPUESTO", no_limit: "Sin límite", search: "Buscar",
+    all: "Todos", all_zones: "Todas las zonas", any_price: "Cualquier precio", under_1m: "Menos de L 1,000,000", between_1_5m: "L 1M – L 5M", over_5m: "Más de L 5M",
+    less_25k: "Hasta L 25,000", between_25_100k: "L 25,001 – L 100,000",
+    whatsapp_consult: "Consultar por WhatsApp", see_phone: "Ver teléfono", send_message: "Enviar mensaje", message_sent: "✅ Mensaje enviado", reply_24h: "Respuesta en menos de 24 horas",
+    similar_properties: "Propiedades similares", back: "Volver", description: "Descripción", features: "Características", total_m2: "m² totales", parking: "Parqueos", bedrooms: "Habitaciones", bathrooms: "Baños",
+    newsletter: "NEWSLETTER", subscribe: "Suscribirme", your_email: "Tu correo electrónico", navigation: "NAVEGACIÓN", contact: "CONTACTO"
+  },
+  en: {
+    nav_home: "Home", nav_properties: "Properties", nav_about: "About", nav_services: "Services", nav_testimonials: "Testimonials", nav_contact: "Contact",
+    view_properties: "View Properties", real_estate_hn: "REAL ESTATE IN HONDURAS", hero_title_1: "Find the home", hero_title_2: "where your life flourishes",
+    hero_desc: "We offer a curated selection of the most exclusive properties in Honduras, from vacation homes to luxury apartments.",
+    for_sale: "For Sale", for_rent: "Rent", type: "TYPE", location: "LOCATION", budget: "BUDGET", no_limit: "No limit", search: "Search",
+    all: "All", all_zones: "All areas", any_price: "Any price", under_1m: "Under L 1,000,000", between_1_5m: "L 1M – L 5M", over_5m: "Over L 5M",
+    less_25k: "Up to L 25,000", between_25_100k: "L 25,001 – L 100,000",
+    whatsapp_consult: "Ask on WhatsApp", see_phone: "View phone", send_message: "Send message", message_sent: "✅ Message sent", reply_24h: "Reply within 24 hours",
+    similar_properties: "Similar properties", back: "Back", description: "Description", features: "Features", total_m2: "total m²", parking: "Parking", bedrooms: "Bedrooms", bathrooms: "Bathrooms",
+    newsletter: "NEWSLETTER", subscribe: "Subscribe", your_email: "Your email", navigation: "NAVIGATION", contact: "CONTACT"
+  }
+};
+
+function detectLang() {
+  const raw = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+  return raw.startsWith('en') ? 'en' : 'es';
+}
+function t(lang, key) {
+  return (DICT[lang] && DICT[lang][key]) || (DICT.es && DICT.es[key]) || key;
+}
+function normalizeText(value) {
+  return String(value || "")
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .trim();
+}
+function useViewport() {
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const onResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return { width, isMobile: width < 768, isTablet: width < 1024 };
+}
+function mapTypeLabel(value, lang) {
+  if (value === "En Venta") return t(lang, "for_sale");
+  if (value === "Alquiler") return t(lang, "for_rent");
+  return value;
+}
+function getPropertyCategories(lang) {
+  const original = ["Casa", "Apartamento", "Terreno"];
+  const dynamic = [...new Set(PROPERTIES.map(p => p.category).filter(Boolean))];
+  const categories = [...new Set([...original, ...dynamic])];
+  return [t(lang, "all"), ...categories];
+}
+function getLocationOptions(lang) {
+  return [
+    t(lang, "all_zones"),
+    "Tegucigalpa",
+    "Valle de Ángeles",
+    "San Pedro Sula"
+  ];
+}
+function priceMatches(priceText, filter) {
+  const num = Number(String(priceText).replace(/[^\d]/g, ""));
+  if (!filter || ["Cualquier precio","Any price","Sin límite","No limit"].includes(filter)) return true;
+  if (["Menos de L 1,000,000","Under L 1,000,000"].includes(filter)) return num < 1000000;
+  if (["L 1M – L 5M"].includes(filter)) return num >= 1000000 && num <= 5000000;
+  if (["Más de L 5M","Over L 5M"].includes(filter)) return num > 5000000;
+  if (["Hasta L 25,000","Up to L 25,000"].includes(filter)) return num <= 25000;
+  if (["L 25,001 – L 100,000"].includes(filter)) return num >= 25001 && num <= 100000;
+  return true;
+}
+function getWhatsAppLink(property, lang) {
+  const phone = "50487647340";
+  const msg = lang === "en"
+    ? `Hello, I would like information about ${property.title} - ${property.location}.`
+    : `Hola, quiero información sobre ${property.title} - ${property.location}.`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+}
+
+
+const G = "#2A5C14";
+const GL = "#3A7A1E";
+const GOLD = "#C8900A";
+const ORANGE = "#E07B10";
+const BEIGE = "#F5F0E8";
+
+const PROPERTIES = [
+  {
+    id: 1,
+    title: "Casa en Las 3 Rosas",
+    location: "Valle de Ángeles, Francisco Morazán",
+    locationShort: "Valle de Ángeles",
+    price: "L. 5,200,000", priceNote: "",
+    type: "En Venta", category: "Casa",
+    beds: 3, baths: 3, area: 545, parking: null,
+    image: "img/imagen1-1.jpg",
+    images: ["img/imagen1-1.jpg", "img/imagen1-2.jpg", "img/imagen1-3.jpg", "img/imagen1-4.jpg", "img/imagen1-5.jpg"],
+    description: "Casa ubicada en Valle de Ángeles, Francisco Morazán. Esta propiedad forma parte del portafolio real de Natural Homes HN y se presenta con la información base proporcionada por la empresa.",
+    features: ["3 habitaciones", "3 baños", "545 m²", "En venta"],
+    agent: { name: "Natural Homes HN", role: "Agencia Inmobiliaria", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&auto=format&fit=crop" },
+  },
+  {
+    id: 2,
+    title: "Apartamento Exclusivo",
+    location: "Col. Tepeyac, Tegucigalpa",
+    locationShort: "Tegucigalpa",
+    price: "$ 700", priceNote: "/mes",
+    type: "Alquiler", category: "Apartamento",
+    beds: 1, baths: 1, area: 60, parking: null,
+    image: "img/imagen2-1.jpeg",
+    images: ["img/imagen2-1.jpeg", "img/imagen2-2.jpeg", "img/imagen2-3.jpeg", "img/imagen2-4.jpeg", "img/imagen2-5.jpeg", "img/imagen2-6.jpeg", "img/imagen2-7.jpeg", "img/imagen2-8.jpeg"],
+    description: "Apartamento en alquiler ubicado en Col. Tepeyac, Tegucigalpa. Se conserva el diseño original del sitio y se actualizan los datos de la propiedad con la información real entregada.",
+    features: ["1 habitación", "1 baño", "60 m²", "Alquiler mensual"],
+    agent: { name: "Natural Homes HN", role: "Agencia Inmobiliaria", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&auto=format&fit=crop" },
+  },
+  {
+    id: 3,
+    title: "Apartamento en Cipreses",
+    location: "San Ignacio, Tegucigalpa",
+    locationShort: "Tegucigalpa",
+    price: "$ 700", priceNote: "/mes",
+    type: "Alquiler", category: "Apartamento",
+    beds: 1, baths: 1, area: 50, parking: null,
+    image: "img/imagen3.jpg",
+    images: ["img/imagen3.jpg"],
+    description: "Apartamento en alquiler en San Ignacio, Tegucigalpa. Los datos visibles de esta ficha fueron ajustados según el archivo de propiedades proporcionado por la empresa.",
+    features: ["1 habitación", "1 baño", "50 m²", "Alquiler mensual"],
+    agent: { name: "Natural Homes HN", role: "Agencia Inmobiliaria", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&auto=format&fit=crop" },
+  },
+  {
+    id: 4,
+    title: "Casa en Las 3 Rosas",
+    location: "Valle de Ángeles, Francisco Morazán",
+    locationShort: "Valle de Ángeles",
+    price: "L. 22,000", priceNote: "/mes",
+    type: "Alquiler", category: "Casa",
+    beds: 3, baths: 3, area: 545, parking: null,
+    image: "img/imagen4-1.jpeg",
+    images: ["img/imagen4-1.jpeg", "img/imagen4-2.jpeg", "img/imagen4-3.jpeg", "img/imagen4-4.jpeg", "img/imagen4-5.jpeg", "img/imagen4-6.jpeg", "img/imagen4-7.jpeg", "img/imagen4-8.jpeg", "img/imagen4-9.jpeg", "img/imagen4-10.jpeg"],
+    description: "Casa en alquiler en Valle de Ángeles, Francisco Morazán. Esta publicación utiliza la información real del inventario suministrado por Natural Homes HN.",
+    features: ["3 habitaciones", "3 baños", "545 m²", "Plano", "Privado"],
+    salePrice: "L. 22,000",
+    agent: { name: "Natural Homes HN", role: "Agencia Inmobiliaria", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&auto=format&fit=crop" },
+  },
+  {
+    id: 5,
+    title: "Casa en Valle de Ángeles",
+    location: "Valle de Ángeles, Francisco Morazán",
+    locationShort: "Valle de Ángeles",
+    price: "L. 3,500,000", priceNote: "",
+    type: "En Venta", category: "Casa",
+    beds: 3, baths: 3, area: 542, parking: 5,
+    image: "img/imagen5-1.jpeg",
+    images: ["img/imagen5-1.jpeg", "img/imagen5-2.jpeg", "img/imagen5-3.jpeg", "img/imagen5-4.jpeg", "img/imagen5-5.jpeg", "img/imagen5-6.jpeg", "img/imagen5-7.jpeg", "img/imagen5-8.jpeg", "img/imagen5-9.jpeg", "img/imagen5-10.jpeg"],
+    description: "Casa en venta en Valle de Ángeles, Francisco Morazán. Se actualizaron título, ubicación, precio y galería conforme a la información real proporcionada en el archivo de propiedades.",
+    features: ["3 habitaciones", "3 baños", "542 m²", "5 estacionamientos", "Estudio"],
+    agent: { name: "Natural Homes HN", role: "Agencia Inmobiliaria", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&auto=format&fit=crop" },
+  },
+  {
+    id: 6,
+    title: "Terreno a 15 minutos del aeropuerto Tocontin",
+    location: "Concepción, Tegucigalpa",
+    locationShort: "Concepción",
+    price: "L. 200,000", priceNote: "",
+    type: "En Venta", category: "Terreno",
+    area: 255, parking: null, beds: null, baths: null,
+    image: "img/imagen6-1.jpeg",
+    images: ["img/imagen6-1.jpeg"],
+    description: "Terreno en venta ubicado en Concepción, Tegucigalpa, a 15 minutos del aeropuerto Tocontín. El contenido fue alineado con el inventario real compartido por la empresa.",
+    features: ["255 m²", "Terreno en venta", "Concepción, Tegucigalpa"],
+    agent: { name: "Natural Homes HN", role: "Agencia Inmobiliaria", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&auto=format&fit=crop" },
+  },
+  {
+    id: 7,
+    title: "Casa Vehicular en Col. Kennedy",
+    location: "Tegucigalpa, Francisco Morazán",
+    locationShort: "Tegucigalpa",
+    price: "L. 5,000,000", priceNote: "",
+    type: "En Venta", category: "Casa",
+    beds: 7, baths: 4, area: 250, parking: null,
+    image: "img/imagen7-1.jpg",
+    images: ["img/imagen7-1.jpg", "img/imagen7-2.jpg", "img/imagen7-3.jpg", "img/imagen7-4.jpg", "img/imagen7-5.jpg"],
+    description: "Casa vehicular ubicada en Col. Kennedy, Tegucigalpa. Esta ficha fue actualizada con los nombres y datos reales definidos en el archivo de propiedades entregado por el usuario.",
+    features: ["7 habitaciones", "4 baños", "250 m²", "En venta"],
+    agent: { name: "Natural Homes HN", role: "Agencia Inmobiliaria", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&auto=format&fit=crop" },
+  },
+];
+
+const TESTIMONIALS = [
+  { name: "María González", role: "Cliente satisfecha", stars: 5, text: "Natural Homes HN superó todas mis expectativas. Encontraron la casa perfecta para mi familia en tiempo récord. Su equipo es profesional, atento y siempre disponible para responder preguntas. ¡Totalmente recomendados!", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop" },
+  { name: "Carlos Mendoza", role: "Inversionista", stars: 5, text: "Llevo 5 años trabajando con Natural Homes HN para mis inversiones en Honduras. Su conocimiento del mercado local es incomparable. Han gestionado más de 10 propiedades para mí con resultados excelentes.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop" },
+  { name: "Ana Rodríguez", role: "Compradora", stars: 5, text: "Buscaba un apartamento que se ajustara a mi presupuesto y necesidades. El equipo de Natural Homes HN me presentó opciones perfectas y el proceso fue muy sencillo. Estoy feliz en mi nuevo hogar.", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop" },
+  { name: "Jorge Padilla", role: "Vendedor de propiedad", stars: 5, text: "Vendí mi casa en menos de 3 semanas gracias a Natural Homes HN. El precio fue exactamente el que esperaba y todo el proceso legal fue impecable. Los recomendaré siempre.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop" },
+  { name: "Laura Suárez", role: "Arrendataria", stars: 5, text: "El proceso de arrendamiento fue rapidísimo y transparente. Encontré el apartamento de mis sueños en Lomas del Guijarro. El equipo siempre estuvo disponible para resolver cualquier inquietud.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop" },
+  { name: "Roberto Flores", role: "Cliente", stars: 5, text: "Excelente servicio de principio a fin. Me asesoraron en cada paso de la compra de mi primera propiedad. Sin duda la mejor decisión haber confiado en Natural Homes HN.", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&auto=format&fit=crop" },
+];
+
+const SERVICES = [
+  { icon: "🏠", title: "Compra de Propiedades", desc: "Te acompañamos en todo el proceso de compra, desde la búsqueda hasta la firma de escrituras. Negociamos el mejor precio para ti." },
+  { icon: "💰", title: "Venta de Propiedades", desc: "Maximizamos el valor de tu propiedad con estrategias de marketing probadas y una red de compradores calificados." },
+  { icon: "🔑", title: "Alquiler y Arrendamiento", desc: "Gestionamos el alquiler de tu propiedad de manera profesional, asegurando inquilinos confiables y contratos seguros." },
+  { icon: "📊", title: "Asesoría de Inversión", desc: "Identificamos las mejores oportunidades de inversión inmobiliaria en Honduras para maximizar tu retorno." },
+  { icon: "📋", title: "Trámites Legales", desc: "Nuestro equipo legal gestiona todos los trámites de escrituración, registros y permisos necesarios." },
+  { icon: "🏗️", title: "Administración de Propiedades", desc: "Administramos tu propiedad de forma integral, desde el mantenimiento hasta la gestión de arrendatarios." },
+];
+
+const LOGO = () => (
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <rect width="36" height="36" rx="8" fill="#E8F5E0"/>
+    <path d="M18 8L7 17h4v11h6v-7h2v7h6V17h4L18 8z" fill={G}/>
+    <rect x="14" y="22" width="8" height="6" rx="1" fill="#7BC67E" opacity="0.6"/>
+  </svg>
+);
+
+const Badge = ({ type, lang = "es" }) => (
+  <span style={{ background: type === "En Venta" ? G : ORANGE, color: "#fff", fontSize: 12, padding: "4px 12px", borderRadius: 20, fontWeight: 500, fontFamily: "sans-serif" }}>
+    {mapTypeLabel(type, lang)}
+  </span>
+);
+
+const StarRow = ({ n = 5 }) => (
+  <div style={{ color: "#F5A623", fontSize: 18, letterSpacing: 2 }}>{"★".repeat(n)}</div>
+);
+
+const Icon = ({ name, size = 16, color = "currentColor" }) => {
+  const icons = {
+    search: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>,
+    pin: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>,
+    bed: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M2 9V6a2 2 0 012-2h16a2 2 0 012 2v3"/><path d="M2 11v5h20v-5"/><path d="M2 11h20"/><rect x="6" y="9" width="4" height="2" rx="1"/></svg>,
+    bath: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M4 12h16v4a4 4 0 01-4 4H8a4 4 0 01-4-4v-4z"/><path d="M4 12V5a2 2 0 012-2h2a2 2 0 012 2v7"/><line x1="2" y1="20" x2="22" y2="20"/></svg>,
+    area: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 17l10-10M7 7h4M7 7v4"/></svg>,
+    arrow: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>,
+    arrowLeft: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>,
+    chevron: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>,
+    chevronRight: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>,
+    home: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>,
+    grid: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>,
+    list: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1" fill={color}/><circle cx="3" cy="12" r="1" fill={color}/><circle cx="3" cy="18" r="1" fill={color}/></svg>,
+    check: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5"><path d="M20 6L9 17l-5-5"/></svg>,
+    whatsapp: <svg width={size} height={size} viewBox="0 0 24 24" fill={color}><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>,
+    phone: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>,
+    mail: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
+    clock: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>,
+    fb: <svg width={size} height={size} viewBox="0 0 24 24" fill={color}><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>,
+    ig: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>,
+    calendar: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+    house: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>,
+    down: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>,
+  };
+  return icons[name] || null;
+};
+
+// ─── NAVBAR ──────────────────────────────────────────────────────────────────
+
+function Navbar({ page, navigate, transparent = false, lang = "es" }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { isMobile } = useViewport();
+  useEffect(() => {
+    const h = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", h);
+    return () => window.removeEventListener("scroll", h);
+  }, []);
+  const isTransparent = transparent && !scrolled;
+  const navItems = [
+    ["home", t(lang, "nav_home")], ["propiedades", t(lang, "nav_properties")], ["nosotros", t(lang, "nav_about")],
+    ["servicios", t(lang, "nav_services")], ["testimonios", t(lang, "nav_testimonials")], ["contacto", t(lang, "nav_contact")]
+  ];
+  return (
+    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: isTransparent ? "rgba(0,0,0,0.35)" : "#fff", backdropFilter: isTransparent ? "blur(4px)" : "none", borderBottom: isTransparent ? "none" : "1px solid #eee", transition: "all 0.3s", padding: isMobile ? "0 16px" : "0 48px", display: "flex", alignItems: "center", height: 64 }}>
+      <div onClick={() => navigate("home")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
+        <LOGO />
+        <span style={{ fontWeight: 700, fontSize: isMobile ? 14 : 16, color: isTransparent ? "#fff" : G, fontFamily: "Georgia, serif", letterSpacing: "-0.5px" }}>Natural Homes HN</span>
+      </div>
+      {!isMobile ? (
+        <>
+          <div style={{ display: "flex", gap: 32, flex: 1, justifyContent: "center" }}>
+            {navItems.map(([k,label]) => (
+              <button key={k} onClick={() => navigate(k)}
+                style={{ background: "none", border: "none", cursor: "pointer", fontSize: 15, fontFamily: "sans-serif", color: isTransparent ? "#fff" : "#222", fontWeight: page === k ? 600 : 400, borderBottom: page === k ? `2px solid ${isTransparent ? "#fff" : "#222"}` : "2px solid transparent", paddingBottom: 2, transition: "all 0.2s" }}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <button onClick={() => navigate("propiedades")}
+            style={{ background: G, color: "#fff", border: "none", borderRadius: 30, padding: "10px 22px", cursor: "pointer", fontFamily: "sans-serif", fontSize: 14, fontWeight: 500, display: "flex", alignItems: "center", gap: 8 }}>
+            <Icon name="search" size={14} color="#fff" /> {t(lang, "view_properties")}
+          </button>
+        </>
+      ) : (
+        <div style={{ marginLeft: "auto", position: "relative" }}>
+          <button onClick={() => setMenuOpen(v => !v)} style={{ background: isTransparent ? "rgba(255,255,255,0.15)" : "#fff", color: isTransparent ? "#fff" : "#222", border: `1px solid ${isTransparent ? "rgba(255,255,255,0.25)" : "#ddd"}`, borderRadius: 10, padding: "8px 10px", fontSize: 18, cursor: "pointer" }}>☰</button>
+          {menuOpen && (
+            <div style={{ position: "absolute", right: 0, top: 48, background: "#fff", border: "1px solid #eee", borderRadius: 12, boxShadow: "0 10px 30px rgba(0,0,0,0.12)", padding: 10, minWidth: 180 }}>
+              {navItems.map(([k,label]) => (
+                <button key={k} onClick={() => { navigate(k); setMenuOpen(false); }} style={{ width: "100%", textAlign: "left", background: "none", border: "none", padding: "10px 8px", cursor: "pointer", fontSize: 14 }}>
+                  {label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </nav>
+  );
+}
+
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+function Footer({ navigate, lang = "es" }) {
+  return (
+    <footer style={{ background: BEIGE }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 16px 32px", display: "grid", gridTemplateColumns: window.innerWidth < 768 ? "1fr" : "1.4fr 1fr 1fr 1.4fr", gap: 48 }}>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}><LOGO /><span style={{ fontWeight: 700, fontSize: 15, color: G, fontFamily: "Georgia, serif" }}>Natural Homes HN</span></div>
+          <p style={{ color: "#555", fontSize: 14, lineHeight: 1.7, fontFamily: "sans-serif", marginBottom: 20 }}>Tu aliado de confianza en el mercado inmobiliario de Honduras. Más de 15 años conectando familias con su hogar ideal.</p>
+          <div style={{ display: "flex", gap: 10 }}>
+            <a href="https://www.instagram.com/naturalhomeshn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: 38, height: 38, borderRadius: "50%", background: G, display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+              <Icon name="ig" size={16} color="#fff" />
             </a>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#propiedades">Propiedades</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <a href="#contacto" class="contact-btn">Publicar Propiedad</a>
+            <a href="https://wa.me/50487647340" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style={{ width: 38, height: 38, borderRadius: "50%", background: G, display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+              <Icon name="whatsapp" size={16} color="#fff" />
+            </a>
+          </div>
         </div>
-    </header>
-
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <span class="hero-badge">Expertos en Bienes Raíces</span>
-            <h1>Encuentra el hogar donde tu vida florece</h1>
-            <p style="font-size: 1.2rem; color: var(--gray); max-width: 600px; margin-bottom: 2.5rem;">
-                Ofrecemos una selección curada de las propiedades más exclusivas en Honduras, desde casas vehiculares hasta apartamentos de lujo.
-            </p>
-            <div style="display: flex; gap: 1rem;">
-                <a href="#propiedades" class="contact-btn" style="padding: 1.2rem 2.5rem;">Ver Catálogo</a>
-                <a href="#contacto" class="contact-btn" style="background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 1.2rem 2.5rem;">Asesoría Gratis</a>
-            </div>
+        <div>
+          <h4 style={{ fontSize: 11, fontFamily: "sans-serif", letterSpacing: 2, color: "#888", marginBottom: 20, fontWeight: 600 }}>{t(lang, "navigation")}</h4>
+          {[["home","Inicio"],["propiedades","Propiedades"],["nosotros","Nosotros"],["servicios","Servicios"],["testimonios","Testimonios"],["contacto","Contacto"]].map(([k,l]) => (
+            <button key={k} onClick={() => navigate(k)} style={{ display: "block", background: "none", border: "none", cursor: "pointer", fontSize: 14, fontFamily: "sans-serif", color: "#444", marginBottom: 12, padding: 0, textAlign: "left" }}>{l}</button>
+          ))}
         </div>
-    </section>
-
-    <section class="search-section">
-        <div class="search-container">
-            <div class="search-tabs">
-                <button class="search-tab active" data-type="all">Todos</button>
-                <button class="search-tab" data-type="sale">Comprar</button>
-                <button class="search-tab" data-type="rent">Alquilar</button>
+        <div>
+          <h4 style={{ fontSize: 11, fontFamily: "sans-serif", letterSpacing: 2, color: "#888", marginBottom: 20, fontWeight: 600 }}>{t(lang, "contact")}</h4>
+          {[
+            { icon:"pin", lines: ["Tegucigalpa, Honduras"] },
+            { icon:"phone", lines: ["+504 8764-7340"] },
+            { icon:"mail", lines: ["info@naturallhn.com"] },
+            { icon:"clock", lines: ["Lun – Vie: 8:00 – 18:00","Sáb: 9:00 – 13:00"] },
+          ].map((c,i) => (
+            <div key={i} style={{ display: "flex", gap: 10, marginBottom: 14, alignItems: "flex-start" }}>
+              <span style={{ color: G, marginTop: 1 }}><Icon name={c.icon} size={15} color={G} /></span>
+              <div>{c.lines.map((l,j) => <p key={j} style={{ margin: 0, fontSize: 13, fontFamily: "sans-serif", color: "#444", lineHeight: 1.6 }}>{l}</p>)}</div>
             </div>
-            <form class="search-form" id="searchForm">
-                <div class="form-group">
-                    <label>Tipo de Inmueble</label>
-                    <select id="propertyType">
-                        <option value="">Cualquier tipo</option>
-                        <option value="Casa">Casa</option>
-                        <option value="Apartamento">Apartamento</option>
-                        <option value="Terreno">Terreno</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Ubicación</label>
-                    <select id="location">
-                        <option value="">Todas las ciudades</option>
-                        <option value="Tegucigalpa">Tegucigalpa</option>
-                        <option value="Valle de Angeles">Valle de Ángeles</option>
-                        <option value="Tatumbla">Tatumbla</option>
-                        <option value="Concepcion">Concepción</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Presupuesto Máximo (L.)</label>
-                    <input type="number" id="maxPrice" placeholder="Ej: 3000000">
-                </div>
-                <button type="submit" class="search-btn">Buscar Propiedades</button>
-            </form>
+          ))}
         </div>
-    </section>
-    <!-- Features Section -->
-    <section class="features" id="servicios">
-        <div class="features-container">
-            <h2 class="section-title">Nuestros Servicios Profesionales</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Experiencia Comprobada</h3>
-                    <p>Años de experiencia en el mercado inmobiliario hondureño, conociendo cada rincón del país.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Asesoría Personalizada</h3>
-                    <p>Te acompañamos en cada paso del proceso, desde la búsqueda hasta el cierre de la operación.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏠</div>
-                    <h3>Amplio Portafolio</h3>
-                    <p>Propiedades en las mejores zonas de Honduras: casas, apartamentos, terrenos y más.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <h3>Asesoría Legal</h3>
-                    <p>Respaldo legal completo para que tu inversión sea segura y transparente.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Tecnología Avanzada</h3>
-                    <p>Plataforma digital moderna para buscar y comparar propiedades fácilmente.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⭐</div>
-                    <h3>Atención de Calidad</h3>
-                    <p>Servicio al cliente excepcional que garantiza tu satisfacción en todo momento.</p>
-                </div>
-            </div>
+        <div>
+          <h4 style={{ fontSize: 11, fontFamily: "sans-serif", letterSpacing: 2, color: "#888", marginBottom: 20, fontWeight: 600 }}>{t(lang, "newsletter")}</h4>
+          <p style={{ fontSize: 13, fontFamily: "sans-serif", color: "#555", lineHeight: 1.6, marginBottom: 16 }}>Recibe las mejores propiedades y noticias del mercado inmobiliario hondureño.</p>
+          <input type="email" placeholder={t(lang, "your_email")}
+            style={{ width: "100%", padding: "10px 14px", border: "1px solid #ddd", borderRadius: 8, fontSize: 14, fontFamily: "sans-serif", marginBottom: 10, boxSizing: "border-box" }} />
+          <button style={{ width: "100%", background: G, color: "#fff", border: "none", borderRadius: 8, padding: "12px", fontSize: 14, fontFamily: "sans-serif", fontWeight: 600, cursor: "pointer" }}>{t(lang, "subscribe")}</button>
         </div>
-    </section>
-    <section class="properties" id="propiedades">
-        <div class="section-header">
-            <h2>Propiedades Destacadas</h2>
-            <p style="color: var(--gray);">Explora las mejores oportunidades de inversión en el mercado actual.</p>
+      </div>
+      <div style={{ borderTop: "1px solid #ddd", padding: "20px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, maxWidth: 1200, margin: "0 auto" }}>
+        <p style={{ margin: 0, fontSize: 13, fontFamily: "sans-serif", color: "#888" }}>© 2026 Natural Homes HN. Todos los derechos reservados.</p>
+        <div style={{ display: "flex", gap: 24 }}>
+          {["Privacidad","Términos"].map(l => <button key={l} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 13, fontFamily: "sans-serif", color: "#888" }}>{l}</button>)}
         </div>
-        
-        <div class="properties-grid" id="propertiesGrid">
-            </div>
-
-        <div id="noResults" class="no-results">
-            <h3 style="font-size: 2rem; color: var(--primary);">Sin resultados</h3>
-            <p>Prueba ajustando los filtros de búsqueda.</p>
-        </div>
-    </section>
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Propiedades Vendidas</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">1,200+</div>
-                <div class="stat-label">Clientes Satisfechos</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">15+</div>
-                <div class="stat-label">Años de Experiencia</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Tasa de Satisfacción</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="nosotros">
-        <div class="testimonials-container">
-            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Excelente servicio, me ayudaron a encontrar la casa perfecta para mi familia. El equipo fue muy profesional y atento durante todo el proceso."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">M</div>
-                        <div class="author-info">
-                            <h4>María González</h4>
-                            <p>Compra de Casa</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"La mejor decisión fue confiar en Natural Homes HN. Vendí mi propiedad en tiempo récord y a un excelente precio. Totalmente recomendados."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">C</div>
-                        <div class="author-info">
-                            <h4>Carlos Méndez</h4>
-                            <p>Venta de Apartamento</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Profesionales de primer nivel. Me asesoraron en la compra de mi terreno y todo el proceso legal fue impecable. Muy satisfecha con el servicio."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Ana Rodríguez</h4>
-                            <p>Compra de Terreno</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="contacto">
-        <div class="cta-container">
-            <h2>Contáctanos Hoy</h2>
-            <p>Estamos listos para ayudarte a dar el siguiente paso en tu inversión.</p>
-            <form action="https://formspree.io/f/mpqonaav" method="POST"class="cta-form" style="display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 500px;">
-                <input type="text" class="cta-input" placeholder="Nombre completo" required>
-                <input type="tel" class="cta-input" placeholder="Teléfono / WhatsApp" required>
-                <input type="email" class="cta-input" placeholder="Correo electrónico" required>
-                <textarea class="cta-input" placeholder="¿En qué propiedad estás interesado?" style="border-radius: 20px; min-height: 100px; padding: 1.2rem; font-family: inherit;"></textarea>
-                <button type="submit" class="cta-button">Enviar Mensaje</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Natural Homes HN</h3>
-                <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-                    Tu aliado de confianza en bienes raíces. Ayudamos a familias hondureñas a encontrar el hogar de sus sueños.
-                </p>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/naturalhomeshn/" class="social-link" target="_blank">📷</a>
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📱</a>
-                    <a href="#" class="social-link">✉️</a>
-                </div>
-            </div>
-
-            <div class="footer-column">
-                <h3>Servicios</h3>
-                <ul>
-                    <li><a href="#">Compra de Propiedades</a></li>
-                    <li><a href="#">Venta de Inmuebles</a></li>
-                    <li><a href="#">Alquiler</a></li>
-                    <li><a href="#">Asesoría Legal</a></li>
-                    <li><a href="#">Valuación</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Enlaces</h3>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#propiedades">Propiedades</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Contacto</h3>
-                <ul>
-                    <li>📍 Tegucigalpa, Honduras</li>
-                    <li>📞 +504 8764-7340</li>
-                    <li>✉️ contact@naturallhn.com</li>
-                    <li>🕒 Lun - Vie: 8:00 - 17:00</li>
-                    <li>🕒 Sáb: 9:00 - 13:00</li>
-                </ul>
-            </div>
-        </div>
-
-    <footer class="footer">
-        <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
-            <p>&copy; 2026 Natural Homes HN. Conectando hogares con corazones.</p>
-        </div>
+      </div>
     </footer>
+  );
+}
 
-    <script src="propiedades.js"></script>
+// ─── PROPERTY CARD ────────────────────────────────────────────────────────────
+function PropCard({ p, navigate, list = false, lang = "es" }) {
+  if (list) return (
+    <div onClick={() => navigate("propiedad", p)} style={{ display: "flex", gap: 0, background: "#fff", borderRadius: 12, overflow: "hidden", border: "1px solid #eee", cursor: "pointer", marginBottom: 16 }}>
+      <img src={p.image} alt={p.title} style={{ width: 280, height: 190, objectFit: "cover", flexShrink: 0 }} />
+      <div style={{ padding: "20px 24px", flex: 1 }}>
+        <div style={{ display: "flex", gap: 8, marginBottom: 10 }}><Badge type={p.type} lang={lang} /></div>
+        <div style={{ fontSize: 22, fontWeight: 700, color: G, fontFamily: "Georgia, serif", marginBottom: 4 }}>{p.price}<span style={{ fontSize: 14, fontWeight: 400, color: "#888" }}>{p.priceNote}</span></div>
+        <div style={{ fontSize: 17, fontWeight: 600, fontFamily: "sans-serif", color: "#111", marginBottom: 6 }}>{p.title}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5, color: "#888", fontSize: 13, fontFamily: "sans-serif", marginBottom: 16 }}><Icon name="pin" size={13} color="#888" />{p.location}</div>
+        <div style={{ display: "flex", gap: 20, fontSize: 13, fontFamily: "sans-serif", color: "#555" }}>
+          {p.beds && <span style={{ display: "flex", alignItems: "center", gap: 5 }}><Icon name="bed" size={14} color="#888" />{p.beds} hab.</span>}
+          {p.baths && <span style={{ display: "flex", alignItems: "center", gap: 5 }}><Icon name="bath" size={14} color="#888" />{p.baths} baños</span>}
+          <span style={{ display: "flex", alignItems: "center", gap: 5 }}><Icon name="area" size={14} color="#888" />{p.area} m²</span>
+        </div>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", padding: "0 24px" }}>
+        <button onClick={e => { e.stopPropagation(); navigate("propiedad", p); }} style={{ background: "none", border: "none", cursor: "pointer", color: G, fontFamily: "sans-serif", fontSize: 14, fontWeight: 500, display: "flex", alignItems: "center", gap: 6 }}>{lang === "en" ? "View more" : "Ver más"} <Icon name="arrow" size={14} color={G} /></button>
+      </div>
+    </div>
+  );
+  return (
+    <div onClick={() => navigate("propiedad", p)} style={{ background: "#fff", borderRadius: 12, overflow: "hidden", border: "1px solid #eee", cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s" }}
+      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 32px rgba(0,0,0,0.1)"; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = ""; }}>
+      <div style={{ position: "relative" }}>
+        <img src={p.image} alt={p.title} style={{ width: "100%", height: 220, objectFit: "cover", display: "block" }} />
+        <div style={{ position: "absolute", top: 12, left: 12 }}><Badge type={p.type} lang={lang} /></div>
+      </div>
+      <div style={{ padding: 20 }}>
+        <div style={{ fontSize: 20, fontWeight: 700, color: G, fontFamily: "Georgia, serif", marginBottom: 4 }}>{p.price}<span style={{ fontSize: 13, fontWeight: 400, color: "#888" }}>{p.priceNote}</span></div>
+        <div style={{ fontSize: 16, fontWeight: 600, fontFamily: "sans-serif", color: "#111", marginBottom: 6 }}>{p.title}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5, color: "#888", fontSize: 13, fontFamily: "sans-serif", marginBottom: 16 }}><Icon name="pin" size={13} color="#888" />{p.locationShort}</div>
+        <div style={{ borderTop: "1px solid #f0f0f0", paddingTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 16, fontSize: 13, fontFamily: "sans-serif", color: "#555" }}>
+            {p.beds && <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Icon name="bed" size={13} color="#888" />{p.beds} hab.</span>}
+            {p.baths && <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Icon name="bath" size={13} color="#888" />{p.baths} baños</span>}
+            <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Icon name="area" size={13} color="#888" />{p.area} m²</span>
+          </div>
+          <button onClick={e => { e.stopPropagation(); navigate("propiedad", p); }} style={{ background: "none", border: "none", cursor: "pointer", color: G, fontFamily: "sans-serif", fontSize: 13, fontWeight: 500, display: "flex", alignItems: "center", gap: 4 }}>{lang === "en" ? "View more" : "Ver más"} <Icon name="arrow" size={13} color={G} /></button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-    <script>
-        let currentTypeFilter = 'all';
+// ─── HOME PAGE ────────────────────────────────────────────────────────────────
 
-        // RENDERIZADO DINÁMICO
-        function renderizar(lista = MIS_PROPIEDADES) {
-            const grid = document.getElementById('propertiesGrid');
-            const noResults = document.getElementById('noResults');
-            grid.innerHTML = "";
+function HomePage({ navigate, lang = "es", onSearch }) {
+  const { isMobile, isTablet } = useViewport();
+  const [heroTab, setHeroTab] = useState(t(lang, "for_sale"));
+  const [searchType, setSearchType] = useState(t(lang, "all"));
+  const [searchLoc, setSearchLoc] = useState(t(lang, "all_zones"));
+  const [searchPrice, setSearchPrice] = useState(t(lang, "any_price"));
+  const [count, setCount] = useState({ props: 0, clients: 0, years: 0, rate: 0 });
 
-            if (lista.length === 0) {
-                noResults.style.display = 'block';
-                return;
-            }
-            noResults.style.display = 'none';
+  useEffect(() => {
+    const targets = { props: 500, clients: 1200, years: 15, rate: 98 };
+    const duration = 2000; const steps = 60; let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      const ratio = step / steps;
+      setCount({ props: Math.round(targets.props * ratio), clients: Math.round(targets.clients * ratio), years: Math.round(targets.years * ratio), rate: Math.round(targets.rate * ratio) });
+      if (step >= steps) clearInterval(timer);
+    }, duration / steps);
+    return () => clearInterval(timer);
+  }, []);
 
-            lista.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'property-card';
-                
-                const imgsHTML = p.images.map((img, i) => 
-                    `<img src="${img}" class="property-image ${i === 0 ? 'active' : ''}" 
-                          onclick="window.location.href='${p.url}'">`
-                ).join('');
+  useEffect(() => {
+    setHeroTab(t(lang, "for_sale"));
+    setSearchType(t(lang, "all"));
+    setSearchLoc(t(lang, "all_zones"));
+    setSearchPrice(t(lang, "any_price"));
+  }, [lang]);
 
-                card.innerHTML = `
-                    <div class="image-slider">
-                        <div class="slides">${imgsHTML}</div>
-                        ${p.images.length > 1 ? `
-                            <button class="slider-btn prev-slide">‹</button>
-                            <button class="slider-btn next-slide">›</button>
-                        ` : ''}
-                        <span class="property-badge">${p.badge}</span>
+  const handleSearch = () => {
+    onSearch?.({ type: searchType, location: searchLoc, tx: heroTab, price: searchPrice });
+    navigate("propiedades");
+  };
+
+  return (
+    <div>
+      <div style={{ position: "relative", minHeight: isMobile ? 860 : 700, height: isMobile ? "auto" : "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", overflow: "hidden", paddingTop: isMobile ? 90 : 0, paddingBottom: isMobile ? 120 : 0 }}>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&auto=format&fit=crop" alt="hero" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.7) 100%)" }} />
+        <div style={{ position: "relative", textAlign: "center", padding: "0 24px", maxWidth: 900 }}>
+          <div style={{ display: "inline-block", background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.4)", borderRadius: 30, padding: "6px 20px", marginBottom: 28 }}>
+            <span style={{ color: "#fff", fontSize: 11, letterSpacing: 3, fontFamily: "sans-serif", fontWeight: 600 }}>{t(lang, "real_estate_hn")}</span>
+          </div>
+          <h1 style={{ margin: "0 0 16px", fontFamily: "Georgia, serif", fontSize: isMobile ? 36 : "clamp(48px,6vw,80px)", fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>{t(lang, "hero_title_1")}</h1>
+          <h1 style={{ margin: "0 0 24px", fontFamily: "Georgia, serif", fontSize: isMobile ? 36 : "clamp(48px,6vw,80px)", fontWeight: 700, color: GOLD, lineHeight: 1.1 }}>{t(lang, "hero_title_2")}</h1>
+          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: isMobile ? 15 : 17, fontFamily: "sans-serif", lineHeight: 1.7, marginBottom: 36 }}>{t(lang, "hero_desc")}</p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 40, flexWrap: "wrap" }}>
+            {[t(lang, "for_sale"), t(lang, "for_rent")].map(tab => (
+              <button key={tab} onClick={() => setHeroTab(tab)}
+                style={{ padding: "10px 28px", borderRadius: 30, border: "2px solid rgba(255,255,255,0.6)", cursor: "pointer", fontFamily: "sans-serif", fontSize: 14, fontWeight: 500, background: heroTab === tab ? GOLD : "transparent", color: heroTab === tab ? "#fff" : "rgba(255,255,255,0.9)", transition: "all 0.2s" }}>
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ position: "relative", background: "rgba(30,30,30,0.85)", backdropFilter: "blur(8px)", borderRadius: 12, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.2fr 1fr auto", alignItems: "stretch", overflow: "hidden", maxWidth: 900, width: "calc(100% - 32px)" }}>
+          <div style={{ padding: "14px 20px", borderRight: isMobile ? "none" : "1px solid rgba(255,255,255,0.15)", borderBottom: isMobile ? "1px solid rgba(255,255,255,0.15)" : "none" }}>
+            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", fontFamily: "sans-serif", letterSpacing: 1.5, marginBottom: 4 }}>{t(lang, "type")}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Icon name="home" size={16} color="rgba(255,255,255,0.7)" />
+              <select value={searchType} onChange={e => setSearchType(e.target.value)} style={{ width: "100%", background: "none", border: "none", color: "#fff", fontFamily: "sans-serif", fontSize: 15, fontWeight: 600, cursor: "pointer", outline: "none" }}>
+                {getPropertyCategories(lang).map(o => <option key={o} value={o} style={{ color: "#000" }}>{o}</option>)}
+              </select>
+            </div>
+          </div>
+          <div style={{ padding: "14px 20px", borderRight: isMobile ? "none" : "1px solid rgba(255,255,255,0.15)", borderBottom: isMobile ? "1px solid rgba(255,255,255,0.15)" : "none" }}>
+            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", fontFamily: "sans-serif", letterSpacing: 1.5, marginBottom: 4 }}>{t(lang, "location")}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Icon name="pin" size={16} color={GOLD} />
+              <select value={searchLoc} onChange={e => setSearchLoc(e.target.value)} style={{ width: "100%", background: "none", border: "none", color: "#fff", fontFamily: "sans-serif", fontSize: 15, fontWeight: 600, cursor: "pointer", outline: "none" }}>
+                {getLocationOptions(lang).map(o => <option key={o} value={o} style={{ color: "#000" }}>{o}</option>)}
+              </select>
+            </div>
+          </div>
+          <div style={{ padding: "14px 20px", borderRight: isMobile ? "none" : "1px solid rgba(255,255,255,0.15)", borderBottom: isMobile ? "1px solid rgba(255,255,255,0.15)" : "none" }}>
+            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", fontFamily: "sans-serif", letterSpacing: 1.5, marginBottom: 4 }}>{t(lang, "budget")}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={GOLD} strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a1.5 1.5 0 010 3H9.5a1.5 1.5 0 000 3H14"/></svg>
+              <select value={searchPrice} onChange={e => setSearchPrice(e.target.value)} style={{ width: "100%", background: "none", border: "none", color: "#fff", fontFamily: "sans-serif", fontSize: 15, fontWeight: 600, cursor: "pointer", outline: "none" }}>
+                {[t(lang, "any_price"), t(lang, "less_25k"), t(lang, "between_25_100k"), t(lang, "under_1m"), t(lang, "between_1_5m"), t(lang, "over_5m")].map(o => <option key={o} value={o} style={{ color: "#000" }}>{o}</option>)}
+              </select>
+            </div>
+          </div>
+          <button onClick={handleSearch} style={{ background: G, border: "none", color: "#fff", padding: isMobile ? "16px 20px" : "0 32px", cursor: "pointer", fontFamily: "sans-serif", fontSize: 15, fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+            <Icon name="search" size={16} color="#fff" /> {t(lang, "search")}
+          </button>
+        </div>
+
+        <div style={{ position: isMobile ? "relative" : "absolute", bottom: isMobile ? "auto" : 0, left: 0, right: 0, background: "rgba(0,0,0,0.6)", padding: "20px 0", display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)", gap: 20, width: "100%", marginTop: isMobile ? 28 : 0 }}>
+          {[{ val: `${count.props}+`, label: "Propiedades Vendidas" },{ val: `${count.clients.toLocaleString()}+`, label: "Clientes Satisfechos" },{ val: `${count.years}+`, label: "Años de Experiencia" },{ val: `${count.rate}%`, label: "Tasa de Satisfacción" }].map((s, i) => (
+            <div key={i} style={{ textAlign: "center" }}>
+              <div style={{ fontSize: isMobile ? 22 : 28, fontWeight: 700, color: "#fff", fontFamily: "sans-serif" }}>{s.val}</div>
+              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", fontFamily: "sans-serif", marginTop: 4 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Footer navigate={navigate} lang={lang} />
+    </div>
+  );
+}
+
+
+// ─── PROPIEDADES PAGE ─────────────────────────────────────────────────────────
+
+function PropiedadesPage({ navigate, lang = "es", initialFilters }) {
+  const { isMobile, isTablet } = useViewport();
+  const [filterType, setFilterType] = useState(initialFilters?.type || t(lang, "all"));
+  const [filterLoc, setFilterLoc] = useState(initialFilters?.location || t(lang, "all_zones"));
+  const [filterTx, setFilterTx] = useState(initialFilters?.tx || t(lang, "all"));
+  const [filterPrice, setFilterPrice] = useState(initialFilters?.price || t(lang, "any_price"));
+  const [viewMode, setViewMode] = useState("grid");
+
+  useEffect(() => {
+    setFilterType(initialFilters?.type || t(lang, "all"));
+    setFilterLoc(initialFilters?.location || t(lang, "all_zones"));
+    setFilterTx(initialFilters?.tx || t(lang, "all"));
+    setFilterPrice(initialFilters?.price || t(lang, "any_price"));
+  }, [initialFilters, lang]);
+
+  const filtered = PROPERTIES.filter(p => {
+    if (![t(lang, "all"), "Todos", "All"].includes(filterType) && p.category !== filterType) return false;
+    if (![t(lang, "all_zones"), "Todas", "All areas", "Todas las zonas"].includes(filterLoc)) {
+      const haystack = normalizeText(`${p.location} ${p.locationShort || ""}`);
+      const needle = normalizeText(filterLoc);
+      if (!haystack.includes(needle)) return false;
+    }
+    if (![t(lang, "all"), "Todos", "All"].includes(filterTx)) {
+      const tx = filterTx === "For Sale" ? "En Venta" : filterTx === "Rent" ? "Alquiler" : filterTx;
+      if (p.type !== tx) return false;
+    }
+    if (!priceMatches(p.price, filterPrice)) return false;
+    return true;
+  });
+
+  return (
+    <div>
+      <div style={{ paddingTop: 64 }}>
+        <div style={{ position: "relative", height: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?w=1400&auto=format&fit=crop" alt="bg" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)" }} />
+          <div style={{ position: "relative", textAlign: "center" }}>
+            <h1 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 38 : 52, fontWeight: 700, color: "#fff", margin: "0 0 8px" }}>{t(lang, "nav_properties")}</h1>
+            <p style={{ fontFamily: "sans-serif", fontSize: 16, color: "rgba(255,255,255,0.85)", margin: 0 }}>{lang === "en" ? "Find your ideal property in Honduras" : "Encuentra tu propiedad ideal en Honduras"}</p>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ background: "#fff", borderBottom: "1px solid #eee", padding: isMobile ? "24px 16px" : "24px 48px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "1fr 1fr" : "repeat(4,1fr)", gap: 20 }}>
+          {[
+            { label: t(lang, "type"), val: filterType, set: setFilterType, opts: getPropertyCategories(lang) },
+            { label: t(lang, "location"), val: filterLoc, set: setFilterLoc, opts: getLocationOptions(lang) },
+            { label: lang === "en" ? "Transaction" : "Transacción", val: filterTx, set: setFilterTx, opts: [t(lang, "all"), t(lang, "for_sale"), t(lang, "for_rent")] },
+            { label: lang === "en" ? "Price" : "Precio", val: filterPrice, set: setFilterPrice, opts: [t(lang, "any_price"), t(lang, "less_25k"), t(lang, "between_25_100k"), t(lang, "under_1m"), t(lang, "between_1_5m"), t(lang, "over_5m")] }
+          ].map(f => (
+            <div key={f.label}>
+              <label style={{ display: "block", fontSize: 12, fontFamily: "sans-serif", color: "#888", marginBottom: 6 }}>{f.label}</label>
+              <div style={{ position: "relative" }}>
+                <select value={f.val} onChange={e => f.set(e.target.value)}
+                  style={{ width: "100%", padding: "10px 36px 10px 14px", border: "1px solid #ddd", borderRadius: 8, fontFamily: "sans-serif", fontSize: 14, appearance: "none", cursor: "pointer", background: "#fafafa" }}>
+                  {f.opts.map(o => <option key={o}>{o}</option>)}
+                </select>
+                <div style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}><Icon name="chevron" size={16} color="#888" /></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "24px 16px" : "32px 48px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+          <p style={{ fontFamily: "sans-serif", fontSize: 15, color: "#555", margin: 0 }}><strong style={{ color: "#111" }}>{filtered.length}</strong> {lang === "en" ? "properties found" : "propiedades encontradas"}</p>
+          <div style={{ display: "flex", gap: 4 }}>
+            {[["grid","grid"],["list","list"]].map(([m, icon]) => (
+              <button key={m} onClick={() => setViewMode(m)} style={{ padding: "8px 10px", border: `1px solid ${viewMode === m ? G : "#ddd"}`, borderRadius: 8, background: viewMode === m ? G : "#fff", cursor: "pointer", display: "flex", alignItems: "center" }}>
+                <Icon name={icon} size={16} color={viewMode === m ? "#fff" : "#666"} />
+              </button>
+            ))}
+          </div>
+        </div>
+        {viewMode === "grid" ? (
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: 28 }}>
+            {filtered.map(p => <PropCard key={p.id} p={p} navigate={navigate} lang={lang} />)}
+          </div>
+        ) : (
+          <div>{filtered.map(p => <PropCard key={p.id} p={p} navigate={navigate} list lang={lang} />)}</div>
+        )}
+      </div>
+      <Footer navigate={navigate} lang={lang} />
+    </div>
+  );
+}
+
+
+// ─── NOSOTROS PAGE ────────────────────────────────────────────────────────────
+function NosotrosPage({ navigate, lang = "es" }) {
+  const { isMobile, isTablet } = useViewport();
+  const TEAM = [
+    { name: "Lucía Reyes", role: "Directora General", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop" },
+    { name: "Carlos Mejía", role: "Gerente de Ventas", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop" },
+    { name: "Ana Torres", role: "Asesora Inmobiliaria", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&auto=format&fit=crop" },
+    { name: "Mario Hernández", role: "Asesor Inmobiliario", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop" },
+  ];
+  return (
+    <div>
+      <div style={{ paddingTop: 64 }}>
+        <div style={{ position: "relative", height: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=1400&auto=format&fit=crop" alt="bg" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.55)" }} />
+          <div style={{ position: "relative", textAlign: "center" }}>
+            <h1 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 38 : 52, fontWeight: 700, color: "#fff", margin: "0 0 8px" }}>Sobre Nosotros</h1>
+            <p style={{ fontFamily: "sans-serif", fontSize: 16, color: "rgba(255,255,255,0.85)", margin: 0 }}>Conoce al equipo detrás de Natural Homes HN</p>
+          </div>
+        </div>
+      </div>
+
+      {/* ABOUT SECTION */}
+      <section style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "56px 16px" : "80px 48px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div style={{ position: "relative" }}>
+            <div style={{ display: "inline-block", border: "2px solid #ddd", borderRadius: 30, padding: "8px 20px", marginBottom: 28 }}>
+              <span style={{ fontFamily: "sans-serif", fontSize: 13, color: "#555" }}>Nuestra Historia</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop" alt="interior" style={{ width: "100%", borderRadius: 16, display: "block" }} />
+          </div>
+          <div>
+            <div style={{ fontSize: 11, letterSpacing: 3, color: G, fontFamily: "sans-serif", fontWeight: 600, marginBottom: 16 }}>QUIÉNES SOMOS</div>
+            <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 32 : 44, fontWeight: 700, color: "#111", margin: "0 0 24px", lineHeight: 1.15 }}>Más de 15 años<br />construyendo sueños</h2>
+            <p style={{ fontFamily: "sans-serif", fontSize: 16, color: "#444", lineHeight: 1.8, marginBottom: 16 }}>Natural Homes HN nació con una misión clara: hacer que el proceso de compra, venta y alquiler de propiedades en Honduras sea simple, transparente y confiable. Desde nuestros inicios en Tegucigalpa, hemos crecido hasta convertirnos en una de las agencias inmobiliarias más reconocidas del país.</p>
+            <p style={{ fontFamily: "sans-serif", fontSize: 16, color: "#444", lineHeight: 1.8, marginBottom: 36 }}>Nuestro equipo de asesores certificados combina un profundo conocimiento del mercado local con las mejores prácticas internacionales, garantizando que cada cliente reciba un servicio personalizado y de primera calidad.</p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 32 }}>
+              {[{ n: "500+", l: "Propiedades Vendidas" },{ n: "1,200+", l: "Clientes Satisfechos" },{ n: "15+", l: "Años de Experiencia" },{ n: "98%", l: "Tasa de Satisfacción" }].map((s, i) => (
+                <div key={i} style={{ background: "#f8f9fa", borderRadius: 12, padding: "20px" }}>
+                  <div style={{ fontSize: 28, fontWeight: 700, color: G, fontFamily: "Georgia, serif" }}>{s.n}</div>
+                  <div style={{ fontSize: 13, color: "#666", fontFamily: "sans-serif", marginTop: 4 }}>{s.l}</div>
+                </div>
+              ))}
+            </div>
+            <button onClick={() => navigate("contacto")} style={{ background: G, color: "#fff", border: "none", borderRadius: 30, padding: "14px 32px", fontFamily: "sans-serif", fontSize: 15, fontWeight: 600, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8 }}>
+              Contáctanos <Icon name="arrow" size={16} color="#fff" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* MISSION/VISION */}
+      <section style={{ background: BEIGE, padding: isMobile ? "56px 16px" : "80px 48px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 32 }}>
+          {[
+            { icon: "🎯", title: "Nuestra Misión", text: "Facilitar el acceso a propiedades de calidad en Honduras, brindando un servicio profesional, transparente y personalizado que supere las expectativas de cada cliente." },
+            { icon: "🌟", title: "Nuestra Visión", text: "Ser la agencia inmobiliaria líder de Honduras, reconocida por nuestra excelencia en el servicio, la innovación en el sector y el impacto positivo en las comunidades que servimos." },
+          ].map((item, i) => (
+            <div key={i} style={{ background: "#fff", borderRadius: 16, padding: "40px 36px" }}>
+              <div style={{ fontSize: isMobile ? 30 : 40, marginBottom: 20 }}>{item.icon}</div>
+              <h3 style={{ fontFamily: "Georgia, serif", fontSize: 26, fontWeight: 700, color: "#111", margin: "0 0 16px" }}>{item.title}</h3>
+              <p style={{ fontFamily: "sans-serif", fontSize: 15, color: "#555", lineHeight: 1.8, margin: 0 }}>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "56px 16px" : "80px 48px" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ fontSize: 11, letterSpacing: 3, color: G, fontFamily: "sans-serif", fontWeight: 600, marginBottom: 12 }}>NUESTRO EQUIPO</div>
+          <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 30 : 40, fontWeight: 700, color: "#111", margin: 0 }}>Los profesionales<br />detrás del éxito</h2>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3,1fr)" : "repeat(4,1fr)", gap: 24 }}>
+          {TEAM.map((m, i) => (
+            <div key={i} style={{ textAlign: "center" }}>
+              <img src={m.img} alt={m.name} style={{ width: 140, height: 140, borderRadius: "50%", objectFit: "cover", marginBottom: 16, border: `4px solid ${BEIGE}` }} />
+              <h4 style={{ fontFamily: "Georgia, serif", fontSize: 18, fontWeight: 700, color: "#111", margin: "0 0 6px" }}>{m.name}</h4>
+              <p style={{ fontFamily: "sans-serif", fontSize: 14, color: G, margin: 0, fontWeight: 500 }}>{m.role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Footer navigate={navigate} lang={lang} />
+    </div>
+  );
+}
+
+// ─── SERVICIOS PAGE ───────────────────────────────────────────────────────────
+function ServiciosPage({ navigate, lang = "es" }) {
+  const { isMobile, isTablet } = useViewport();
+  return (
+    <div>
+      <div style={{ paddingTop: 64 }}>
+        <div style={{ position: "relative", height: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1400&auto=format&fit=crop" alt="bg" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)" }} />
+          <div style={{ position: "relative", textAlign: "center" }}>
+            <h1 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 38 : 52, fontWeight: 700, color: "#fff", margin: "0 0 8px" }}>Nuestros Servicios</h1>
+            <p style={{ fontFamily: "sans-serif", fontSize: 16, color: "rgba(255,255,255,0.85)", margin: 0 }}>Soluciones integrales para tus necesidades inmobiliarias</p>
+          </div>
+        </div>
+      </div>
+
+      <section style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "56px 16px" : "80px 48px" }}>
+        <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <div style={{ fontSize: 11, letterSpacing: 3, color: G, fontFamily: "sans-serif", fontWeight: 600, marginBottom: 12 }}>LO QUE OFRECEMOS</div>
+          <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 30 : 40, fontWeight: 700, color: "#111", margin: "0 0 16px" }}>Servicios diseñados<br />para ti</h2>
+          <p style={{ fontFamily: "sans-serif", fontSize: 16, color: "#666", lineHeight: 1.7 }}>Ofrecemos un portafolio completo de servicios inmobiliarios con los más altos estándares de calidad.</p>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: 32 }}>
+          {SERVICES.map((s, i) => (
+            <div key={i} style={{ background: "#fff", borderRadius: 16, padding: "40px 32px", border: "1px solid #eee", transition: "all 0.2s" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = G; e.currentTarget.style.boxShadow = "0 8px 24px rgba(42,92,20,0.1)"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "#eee"; e.currentTarget.style.boxShadow = ""; }}>
+              <div style={{ fontSize: isMobile ? 32 : 44, marginBottom: 20 }}>{s.icon}</div>
+              <h3 style={{ fontFamily: "Georgia, serif", fontSize: 22, fontWeight: 700, color: "#111", margin: "0 0 12px" }}>{s.title}</h3>
+              <p style={{ fontFamily: "sans-serif", fontSize: 14, color: "#666", lineHeight: 1.8, margin: "0 0 24px" }}>{s.desc}</p>
+              <button onClick={() => navigate("contacto")} style={{ background: "none", border: "none", cursor: "pointer", color: G, fontFamily: "sans-serif", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", gap: 6, padding: 0 }}>
+                Saber más <Icon name="arrow" size={14} color={G} />
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section style={{ background: BEIGE, padding: isMobile ? "56px 16px" : "80px 48px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <div style={{ fontSize: 11, letterSpacing: 3, color: G, fontFamily: "sans-serif", fontWeight: 600, marginBottom: 12 }}>CÓMO FUNCIONA</div>
+            <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 30 : 40, fontWeight: 700, color: "#111", margin: 0 }}>Proceso simple y transparente</h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: 32, position: "relative" }}>
+            {[
+              { step: "01", title: "Consulta inicial", desc: "Nos cuentas tus necesidades y presupuesto." },
+              { step: "02", title: "Búsqueda personalizada", desc: "Seleccionamos las mejores opciones para ti." },
+              { step: "03", title: "Visitas y evaluación", desc: "Te acompañamos en cada visita y evaluación." },
+              { step: "04", title: "Cierre exitoso", desc: "Gestionamos todos los trámites hasta la firma." },
+            ].map((item, i) => (
+              <div key={i} style={{ textAlign: "center" }}>
+                <div style={{ width: 64, height: 64, background: G, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", fontFamily: "Georgia, serif", fontSize: 22, fontWeight: 700, color: "#fff" }}>{item.step}</div>
+                <h4 style={{ fontFamily: "Georgia, serif", fontSize: 18, fontWeight: 700, color: "#111", margin: "0 0 10px" }}>{item.title}</h4>
+                <p style={{ fontFamily: "sans-serif", fontSize: 14, color: "#666", lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ padding: isMobile ? "48px 16px" : "60px 48px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", background: G, borderRadius: 20, padding: isMobile ? "40px 20px" : "60px 80px", textAlign: "center" }}>
+          <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 32 : 42, fontWeight: 700, color: "#fff", margin: "0 0 16px" }}>¿Necesitas asesoría personalizada?</h2>
+          <p style={{ fontFamily: "sans-serif", fontSize: 17, color: "rgba(255,255,255,0.85)", marginBottom: 36 }}>Nuestro equipo está listo para ayudarte. Contáctanos hoy y recibe una consulta gratuita.</p>
+          <button onClick={() => navigate("contacto")} style={{ background: "#fff", color: G, border: "none", borderRadius: 30, padding: "14px 36px", fontFamily: "sans-serif", fontSize: 15, fontWeight: 700, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8 }}>
+            Solicitar Consulta Gratuita <Icon name="arrow" size={16} color={G} />
+          </button>
+        </div>
+      </section>
+
+      <Footer navigate={navigate} lang={lang} />
+    </div>
+  );
+}
+
+// ─── TESTIMONIOS PAGE ─────────────────────────────────────────────────────────
+function TestimoniosPage({ navigate, lang = "es" }) {
+  const { isMobile, isTablet } = useViewport();
+  const [msgName, setMsgName] = useState("");
+  const [msgText, setMsgText] = useState("");
+  const [sent, setSent] = useState(false);
+  return (
+    <div>
+      <div style={{ paddingTop: 64 }}>
+        <div style={{ position: "relative", height: 280, display: "flex", alignItems: "center", justifyContent: "center", background: "#111" }}>
+          <div style={{ position: "relative", textAlign: "center" }}>
+            <h1 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 38 : 56, fontWeight: 700, color: "#fff", margin: "0 0 12px" }}>Testimonios</h1>
+            <p style={{ fontFamily: "sans-serif", fontSize: 16, color: "rgba(255,255,255,0.75)", margin: 0 }}>Lo que dicen nuestros clientes satisfechos</p>
+          </div>
+        </div>
+      </div>
+
+      <section style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "56px 16px" : "80px 48px" }}>
+        <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <div style={{ fontSize: 11, letterSpacing: 3, color: G, fontFamily: "sans-serif", fontWeight: 600, marginBottom: 12 }}>OPINIONES REALES</div>
+          <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 32 : 44, fontWeight: 700, color: "#111", margin: 0 }}>Clientes que confían en nosotros</h2>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: 28 }}>
+          {TESTIMONIALS.map((t, i) => (
+            <div key={i} style={{ background: "#fff", borderRadius: 16, padding: "32px 28px", border: "1px solid #eee" }}>
+              <StarRow n={t.stars} />
+              <p style={{ fontFamily: "sans-serif", fontSize: 14, color: "#444", lineHeight: 1.8, margin: "16px 0 24px", fontStyle: "italic" }}>"{t.text}"</p>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <img src={t.img} alt={t.name} style={{ width: 48, height: 48, borderRadius: "50%", objectFit: "cover" }} />
+                <div>
+                  <div style={{ fontFamily: "sans-serif", fontWeight: 600, color: "#111", fontSize: 15 }}>{t.name}</div>
+                  <div style={{ fontFamily: "sans-serif", fontSize: 13, color: G }}>{t.role}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section style={{ background: BEIGE, padding: isMobile ? "48px 16px" : "60px 48px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)", gap: 32, textAlign: "center" }}>
+          {[{ n: "1,200+", l: "Familias felices" },{ n: "98%", l: "Tasa de satisfacción" },{ n: "500+", l: "Propiedades vendidas" },{ n: "15+", l: "Años de experiencia" }].map((s, i) => (
+            <div key={i}>
+              <div style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, color: G, fontFamily: "Georgia, serif" }}>{s.n}</div>
+              <div style={{ fontSize: 14, color: "#666", fontFamily: "sans-serif", marginTop: 8 }}>{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SHARE SECTION */}
+      <section style={{ padding: isMobile ? "48px 16px" : "60px 48px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", background: "#111", borderRadius: 20, padding: isMobile ? "40px 20px" : "60px 80px", textAlign: "center" }}>
+          <div style={{ fontSize: 11, letterSpacing: 3, color: "rgba(255,255,255,0.5)", fontFamily: "sans-serif", fontWeight: 600, marginBottom: 16 }}>¿YA TRABAJASTE CON NOSOTROS?</div>
+          <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 32 : 42, fontWeight: 700, color: "#fff", margin: "0 0 16px" }}>Comparte tu experiencia</h2>
+          <p style={{ fontFamily: "sans-serif", fontSize: 17, color: "rgba(255,255,255,0.75)", marginBottom: 36 }}>Tu opinión nos ayuda a mejorar y a que más familias hondureñas encuentren su hogar ideal.</p>
+          {!sent ? (
+            <div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, maxWidth: 600, margin: "0 auto 16px" }}>
+                <input value={msgName} onChange={e => setMsgName(e.target.value)} placeholder="Tu nombre" style={{ padding: "12px 16px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff", fontFamily: "sans-serif", fontSize: 14 }} />
+                <input placeholder="tu@correo.com" style={{ padding: "12px 16px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff", fontFamily: "sans-serif", fontSize: 14 }} />
+              </div>
+              <textarea value={msgText} onChange={e => setMsgText(e.target.value)} placeholder="Cuéntanos tu experiencia..." rows="4"
+                style={{ width: "100%", maxWidth: 600, padding: "12px 16px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff", fontFamily: "sans-serif", fontSize: 14, resize: "none", boxSizing: "border-box", marginBottom: 20 }} />
+              <button onClick={() => { if (msgName && msgText) setSent(true); }}
+                style={{ background: GOLD, color: "#fff", border: "none", borderRadius: 30, padding: "14px 36px", fontFamily: "sans-serif", fontSize: 15, fontWeight: 600, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8 }}>
+                <Icon name="mail" size={16} color="#fff" /> Enviar mi Testimonio
+              </button>
+            </div>
+          ) : (
+            <div style={{ color: "#fff", fontFamily: "sans-serif", fontSize: 18 }}>✅ ¡Gracias por compartir tu testimonio, {msgName}!</div>
+          )}
+        </div>
+      </section>
+
+      <Footer navigate={navigate} lang={lang} />
+    </div>
+  );
+}
+
+// ─── CONTACTO PAGE ────────────────────────────────────────────────────────────
+function ContactoPage({ navigate, lang = "es" }) {
+  const { isMobile, isTablet } = useViewport();
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [sent, setSent] = useState(false);
+  const [charCount, setCharCount] = useState(0);
+  const update = (k, v) => { setForm(f => ({ ...f, [k]: v })); if (k === "message") setCharCount(v.length); };
+  return (
+    <div>
+      <div style={{ paddingTop: 64 }}>
+        <div style={{ position: "relative", height: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&auto=format&fit=crop" alt="bg" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.55)" }} />
+          <div style={{ position: "relative", textAlign: "center" }}>
+            <h1 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 38 : 52, fontWeight: 700, color: "#fff", margin: "0 0 8px" }}>Contáctanos</h1>
+            <p style={{ fontFamily: "sans-serif", fontSize: 16, color: "rgba(255,255,255,0.85)", margin: 0 }}>Estamos aquí para ayudarte a encontrar tu propiedad ideal</p>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "56px 16px" : "80px 48px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.4fr", gap: 64 }}>
+          <div>
+            <div style={{ fontSize: 11, letterSpacing: 3, color: G, fontFamily: "sans-serif", fontWeight: 600, marginBottom: 16 }}>INFORMACIÓN</div>
+            <h2 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 30 : 38, fontWeight: 700, color: "#111", margin: "0 0 16px", lineHeight: 1.2 }}>Hablemos de tu próxima propiedad</h2>
+            <p style={{ fontFamily: "sans-serif", fontSize: 15, color: "#555", lineHeight: 1.8, marginBottom: 36 }}>Nuestro equipo de expertos está disponible para responder todas tus preguntas y guiarte en el proceso.</p>
+            {[
+              { icon: "pin", title: "Dirección", lines: ["Tegucigalpa, Honduras","Col. Lomas del Guijarro"] },
+              { icon: "phone", title: "Teléfono", lines: ["+504 8764-7340"] },
+              { icon: "mail", title: "Correo", lines: ["info@naturallhn.com"] },
+              { icon: "clock", title: "Horario", lines: ["Lun – Vie: 8:00 – 18:00","Sáb: 9:00 – 13:00"] },
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", gap: 16, marginBottom: 24, alignItems: "flex-start" }}>
+                <div style={{ width: 44, height: 44, background: "#f0f7eb", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Icon name={item.icon} size={18} color={G} />
+                </div>
+                <div>
+                  <div style={{ fontFamily: "sans-serif", fontWeight: 600, color: "#111", fontSize: 15, marginBottom: 4 }}>{item.title}</div>
+                  {item.lines.map((l, j) => <p key={j} style={{ margin: 0, fontFamily: "sans-serif", fontSize: 14, color: "#555", lineHeight: 1.6 }}>{l}</p>)}
+                </div>
+              </div>
+            ))}
+            <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
+              <a href="https://www.instagram.com/naturalhomeshn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: 40, height: 40, borderRadius: "50%", background: G, display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                <Icon name="ig" size={16} color="#fff" />
+              </a>
+              <a href="https://wa.me/50487647340" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style={{ width: 40, height: 40, borderRadius: "50%", background: G, display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                <Icon name="whatsapp" size={16} color="#fff" />
+              </a>
+            </div>
+          </div>
+          <div>
+            {!sent ? (
+              <div>
+                <h3 style={{ fontFamily: "Georgia, serif", fontSize: 26, fontWeight: 700, color: "#111", margin: "0 0 28px" }}>Envíanos un mensaje</h3>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 16, marginBottom: 16 }}>
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontFamily: "sans-serif", color: "#555", marginBottom: 6 }}>Nombre completo *</label>
+                    <input value={form.name} onChange={e => update("name", e.target.value)} placeholder="Tu nombre" style={{ width: "100%", padding: "12px 14px", border: "1px solid #ddd", borderRadius: 8, fontFamily: "sans-serif", fontSize: 14, boxSizing: "border-box" }} />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontFamily: "sans-serif", color: "#555", marginBottom: 6 }}>Correo electrónico *</label>
+                    <input value={form.email} onChange={e => update("email", e.target.value)} placeholder="tu@correo.com" style={{ width: "100%", padding: "12px 14px", border: "1px solid #ddd", borderRadius: 8, fontFamily: "sans-serif", fontSize: 14, boxSizing: "border-box" }} />
+                  </div>
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 16, marginBottom: 16 }}>
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontFamily: "sans-serif", color: "#555", marginBottom: 6 }}>Teléfono</label>
+                    <input value={form.phone} onChange={e => update("phone", e.target.value)} placeholder="+504 0000-0000" style={{ width: "100%", padding: "12px 14px", border: "1px solid #ddd", borderRadius: 8, fontFamily: "sans-serif", fontSize: 14, boxSizing: "border-box" }} />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontFamily: "sans-serif", color: "#555", marginBottom: 6 }}>Asunto *</label>
+                    <div style={{ position: "relative" }}>
+                      <select value={form.subject} onChange={e => update("subject", e.target.value)} style={{ width: "100%", padding: "12px 36px 12px 14px", border: "1px solid #ddd", borderRadius: 8, fontFamily: "sans-serif", fontSize: 14, appearance: "none", background: "#fff", boxSizing: "border-box" }}>
+                        <option value="">Seleccionar...</option>
+                        {["Compra de propiedad","Alquiler","Venta de propiedad","Asesoría de inversión","Otro"].map(o => <option key={o}>{o}</option>)}
+                      </select>
+                      <div style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}><Icon name="chevron" size={16} color="#888" /></div>
                     </div>
-                    <div class="property-content">
-                        <div class="property-price">${p.priceTag}</div>
-                        <h3 class="property-title" onclick="window.location.href='${p.url}'">${p.title}</h3>
-                        <div class="property-location">📍 ${p.location}</div>
-                        <div class="property-features">
-                            ${p.bedrooms ? `<div class="feature">🛏️ ${p.bedrooms} Hab</div>` : ''}
-                            ${p.area ? `<div class="feature">📐 ${p.area} m²</div>` : ''}
-                            <div class="feature">🏠 ${p.propertyType}</div>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-            inicializarSliders();
-            activarAnimacionScroll(); // Llama a tu función de animaciones
-        }
+                  </div>
+                </div>
+                <div style={{ marginBottom: 24 }}>
+                  <label style={{ display: "block", fontSize: 13, fontFamily: "sans-serif", color: "#555", marginBottom: 6 }}>Mensaje * ({charCount}/500)</label>
+                  <textarea value={form.message} onChange={e => { if (e.target.value.length <= 500) update("message", e.target.value); }} rows="6" placeholder="Cuéntanos sobre la propiedad que buscas..." maxLength={500}
+                    style={{ width: "100%", padding: "12px 14px", border: "1px solid #ddd", borderRadius: 8, fontFamily: "sans-serif", fontSize: 14, resize: "none", boxSizing: "border-box" }} />
+                </div>
+                <button onClick={() => { if (form.name && form.email && form.subject && form.message) setSent(true); }}
+                  style={{ width: "100%", background: G, color: "#fff", border: "none", borderRadius: 10, padding: "16px", fontFamily: "sans-serif", fontSize: 16, fontWeight: 600, cursor: "pointer" }}>
+                  Enviar Mensaje
+                </button>
+              </div>
+            ) : (
+              <div style={{ textAlign: "center", padding: "80px 40px", background: "#f0f7eb", borderRadius: 16 }}>
+                <div style={{ fontSize: 64, marginBottom: 16 }}>✅</div>
+                <h3 style={{ fontFamily: "Georgia, serif", fontSize: 26, fontWeight: 700, color: G, margin: "0 0 12px" }}>¡Mensaje enviado!</h3>
+                <p style={{ fontFamily: "sans-serif", fontSize: 15, color: "#555", lineHeight: 1.7 }}>Gracias {form.name}, nuestro equipo se pondrá en contacto contigo en menos de 24 horas.</p>
+                <button onClick={() => { setSent(false); setForm({ name:"",email:"",phone:"",subject:"",message:"" }); setCharCount(0); }} style={{ marginTop: 24, background: G, color: "#fff", border: "none", borderRadius: 30, padding: "12px 28px", fontFamily: "sans-serif", fontSize: 14, cursor: "pointer" }}>Enviar otro mensaje</button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <Footer navigate={navigate} lang={lang} />
+    </div>
+  );
+}
 
-        // SLIDERS
-        function inicializarSliders() {
-            document.querySelectorAll('.image-slider').forEach(slider => {
-                const slides = slider.querySelectorAll('.property-image');
-                if (slides.length <= 1) return;
+// ─── PROPERTY DETAIL PAGE ─────────────────────────────────────────────────────
+function PropiedadPage({ property, navigate, lang = "es" }) {
+  const p = property;
+  const [activeImg, setActiveImg] = useState(0);
+  const [showPhone, setShowPhone] = useState(false);
+  const [msgSent, setMsgSent] = useState(false);
+  const { isMobile, isTablet } = useViewport();
+  const similar = PROPERTIES.filter(x => x.id !== p.id && (x.category === p.category || x.type === p.type)).slice(0, 3);
+  const displayPrice = p.salePrice || p.price;
 
-                let idx = 0;
-                slider.querySelector('.next-slide').onclick = (e) => {
-                    e.stopPropagation();
-                    slides[idx].classList.remove('active');
-                    idx = (idx + 1) % slides.length;
-                    slides[idx].classList.add('active');
-                };
-                slider.querySelector('.prev-slide').onclick = (e) => {
-                    e.stopPropagation();
-                    slides[idx].classList.remove('active');
-                    idx = (idx - 1 + slides.length) % slides.length;
-                    slides[idx].classList.add('active');
-                };
-            });
-        }
+  return (
+    <div>
+      <div style={{ paddingTop: 64 }}>
+        {/* Breadcrumb */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "16px" : "20px 48px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, fontFamily: "sans-serif", color: "#888" }}>
+            <button onClick={() => navigate("home")} style={{ background: "none", border: "none", cursor: "pointer", color: "#888", fontSize: 14, padding: 0 }}>{t(lang, "nav_home")}</button>
+            <Icon name="chevronRight" size={14} color="#ccc" />
+            <button onClick={() => navigate("propiedades")} style={{ background: "none", border: "none", cursor: "pointer", color: "#888", fontSize: 14, padding: 0 }}>{t(lang, "nav_properties")}</button>
+            <Icon name="chevronRight" size={14} color="#ccc" />
+            <span style={{ color: "#333", fontWeight: 500 }}>{p.title}</span>
+            <div style={{ marginLeft: "auto" }}>
+              <button onClick={() => navigate("propiedades")} style={{ background: "none", border: "none", cursor: "pointer", color: "#555", fontFamily: "sans-serif", fontSize: 14, display: "flex", alignItems: "center", gap: 6 }}>
+                <Icon name="arrowLeft" size={14} color="#555" /> {t(lang, "back")}
+              </button>
+            </div>
+          </div>
+        </div>
 
-        // FILTROS
-        function aplicarFiltros() {
-            const pType = document.getElementById('propertyType').value;
-            const loc = document.getElementById('location').value;
-            const price = document.getElementById('maxPrice').value;
+        {/* Title area */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "0 16px 16px" : "0 48px 20px" }}>
+          <div style={{ display: "flex", gap: 10, marginBottom: 12 }}>
+            <Badge type={p.type} lang={lang} />
+            <span style={{ background: "#f0f0f0", color: "#555", fontSize: 12, padding: "4px 12px", borderRadius: 20, fontFamily: "sans-serif", fontWeight: 500 }}>{p.category}</span>
+          </div>
+          <h1 style={{ fontFamily: "Georgia, serif", fontSize: isMobile ? 28 : 36, fontWeight: 700, color: "#111", margin: "0 0 8px" }}>{p.title}</h1>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#888", fontFamily: "sans-serif", fontSize: 14 }}>
+            <Icon name="pin" size={14} color="#888" />{p.location}
+          </div>
+        </div>
 
-            const filtradas = MIS_PROPIEDADES.filter(p => {
-                const matchTab = currentTypeFilter === 'all' || p.type === currentTypeFilter;
-                const matchType = !pType || p.propertyType === pType;
-                const matchLoc = !loc || p.location.includes(loc);
-                const matchPrice = !price || p.price <= parseInt(price);
-                return matchTab && matchType && matchLoc && matchPrice;
-            });
-            renderizar(filtradas);
-        }
+        {/* Gallery */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "0 16px 24px" : "0 48px 40px", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 380px", gap: 16, alignItems: "start" }}>
+          <div>
+            <img src={p.images[activeImg]} alt={p.title} style={{ width: "100%", height: isMobile ? 280 : 500, objectFit: "cover", borderRadius: 12, display: "block", marginBottom: 8 }} />
+            <div style={{ display: "flex", gap: 8 }}>
+              {p.images.map((img, i) => (
+                <img key={i} src={img} alt="" onClick={() => setActiveImg(i)}
+                  style={{ width: 80, height: 60, objectFit: "cover", borderRadius: 8, cursor: "pointer", border: `2px solid ${activeImg === i ? G : "transparent"}`, opacity: activeImg === i ? 1 : 0.7 }} />
+              ))}
+            </div>
+          </div>
+          {/* Sidebar */}
+          <div style={{ background: "#fff", border: "1px solid #eee", borderRadius: 16, padding: "28px", position: isMobile ? "static" : "sticky", top: 80 }}>
+            <div style={{ fontSize: 32, fontWeight: 700, color: G, fontFamily: "Georgia, serif", marginBottom: 4 }}>{displayPrice}{p.priceNote && !p.salePrice ? <span style={{ fontSize: 16, fontWeight: 400, color: "#888" }}>{p.priceNote}</span> : ""}</div>
+            <Badge type={p.type} lang={lang} />
+            <div style={{ borderTop: "1px solid #f0f0f0", margin: "20px 0" }} />
+            {p.agent && (
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+                <img src={p.agent.img} alt={p.agent.name} style={{ width: 48, height: 48, borderRadius: "50%", objectFit: "cover" }} />
+                <div>
+                  <div style={{ fontFamily: "sans-serif", fontWeight: 600, color: "#111", fontSize: 15 }}>{p.agent.name}</div>
+                  <div style={{ fontFamily: "sans-serif", fontSize: 13, color: "#888" }}>{p.agent.role}</div>
+                </div>
+              </div>
+            )}
+            <a href={getWhatsAppLink(p, lang)} target="_blank" rel="noopener noreferrer" style={{ width: "100%", textDecoration: "none", background: G, color: "#fff", border: "none", borderRadius: 10, padding: "14px", fontFamily: "sans-serif", fontSize: 15, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 10 }}>
+              <Icon name="whatsapp" size={18} color="#fff" /> Consultar por WhatsApp
+            </a>
+            <button onClick={() => setShowPhone(!showPhone)} style={{ width: "100%", background: "#fff", color: "#111", border: "1px solid #ddd", borderRadius: 10, padding: "12px", fontFamily: "sans-serif", fontSize: 15, fontWeight: 500, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 10 }}>
+              <Icon name="phone" size={16} color="#555" /> {showPhone ? "+504 8764-7340" : t(lang, "see_phone")}
+            </button>
+            {!msgSent ? (
+              <button onClick={() => setMsgSent(true)} style={{ width: "100%", background: "none", color: "#555", border: "none", cursor: "pointer", fontFamily: "sans-serif", fontSize: 14, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "10px" }}>
+                <Icon name="mail" size={15} color="#888" /> Enviar mensaje
+              </button>
+            ) : (
+              <p style={{ textAlign: "center", color: G, fontFamily: "sans-serif", fontSize: 14, margin: "10px 0 0" }}>✅ Mensaje enviado</p>
+            )}
+            <p style={{ textAlign: "center", fontSize: 12, color: "#aaa", fontFamily: "sans-serif", marginTop: 8 }}>Respuesta en menos de 24 horas</p>
+          </div>
+        </div>
 
-        // EVENTOS
-        document.querySelectorAll('.search-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelector('.search-tab.active').classList.remove('active');
-                this.classList.add('active');
-                currentTypeFilter = this.dataset.type;
-                aplicarFiltros();
-            });
-        });
+        {/* Stats strip */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "0 16px 24px" : "0 48px 40px" }}>
+          <div style={{ background: "#fff", border: "1px solid #eee", borderRadius: 12, display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : (p.beds ? "1fr 1fr 1fr 1fr" : "1fr 1fr"), padding: "28px" }}>
+            {p.beds && (
+              <>
+                <div style={{ textAlign: "center", borderRight: "1px solid #eee", padding: "0 24px" }}>
+                  <div style={{ fontSize: 32, fontWeight: 700, color: "#111", fontFamily: "sans-serif" }}>{p.beds}</div>
+                  <div style={{ fontSize: 13, color: "#888", fontFamily: "sans-serif", marginTop: 4 }}>{t(lang, "bedrooms")}</div>
+                </div>
+                <div style={{ textAlign: "center", borderRight: "1px solid #eee", padding: "0 24px" }}>
+                  <div style={{ fontSize: 32, fontWeight: 700, color: "#111", fontFamily: "sans-serif" }}>{p.baths}</div>
+                  <div style={{ fontSize: 13, color: "#888", fontFamily: "sans-serif", marginTop: 4 }}>{t(lang, "bathrooms")}</div>
+                </div>
+              </>
+            )}
+            <div style={{ textAlign: "center", borderRight: p.beds ? "1px solid #eee" : "none", padding: "0 24px" }}>
+              <div style={{ fontSize: 32, fontWeight: 700, color: "#111", fontFamily: "sans-serif" }}>{p.area}</div>
+              <div style={{ fontSize: 13, color: "#888", fontFamily: "sans-serif", marginTop: 4 }}>{t(lang, "total_m2")}</div>
+            </div>
+            {p.parking && (
+              <div style={{ textAlign: "center", padding: "0 24px" }}>
+                <div style={{ fontSize: 32, fontWeight: 700, color: "#111", fontFamily: "sans-serif" }}>{p.parking}</div>
+                <div style={{ fontSize: 13, color: "#888", fontFamily: "sans-serif", marginTop: 4 }}>{t(lang, "parking")}</div>
+              </div>
+            )}
+          </div>
+        </div>
 
-        document.getElementById('searchForm').onsubmit = (e) => {
-            e.preventDefault();
-            aplicarFiltros();
-            document.getElementById('propiedades').scrollIntoView({ behavior: 'smooth' });
-        };
+        {/* Description & Features */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "0 16px 40px" : "0 48px 60px" }}>
+          <div style={{ background: "#fff", border: "1px solid #eee", borderRadius: 12, padding: "32px", marginBottom: 24 }}>
+            <h3 style={{ fontFamily: "Georgia, serif", fontSize: 24, fontWeight: 700, color: "#111", margin: "0 0 16px" }}>{t(lang, "description")}</h3>
+            <p style={{ fontFamily: "sans-serif", fontSize: 15, color: "#444", lineHeight: 1.8, margin: "0 0 24px" }}>{p.description}</p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              {p.year && (
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <Icon name="calendar" size={18} color="#888" />
+                  <div>
+                    <div style={{ fontSize: 12, color: "#aaa", fontFamily: "sans-serif" }}>Año de construcción</div>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: "#111", fontFamily: "sans-serif" }}>{p.year}</div>
+                  </div>
+                </div>
+              )}
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <Icon name="house" size={18} color="#888" />
+                <div>
+                  <div style={{ fontSize: 12, color: "#aaa", fontFamily: "sans-serif" }}>Tipo de propiedad</div>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: "#111", fontFamily: "sans-serif" }}>{p.category}</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        // ANIMACIONES AL BAJAR (Tu código original)
-        function activarAnimacionScroll() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
+          <div style={{ background: "#fff", border: "1px solid #eee", borderRadius: 12, padding: "32px" }}>
+            <h3 style={{ fontFamily: "Georgia, serif", fontSize: 24, fontWeight: 700, color: "#111", margin: "0 0 24px" }}>{t(lang, "features")}</h3>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12 }}>
+              {p.features.map((f, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 22, height: 22, background: "#f0f7eb", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <Icon name="check" size={12} color={G} />
+                  </div>
+                  <span style={{ fontFamily: "sans-serif", fontSize: 14, color: "#444" }}>{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-            document.querySelectorAll('.property-card').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease-out';
-                observer.observe(el);
-            });
-        }
+        {/* Location */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px 60px" }}>
+          <h3 style={{ fontFamily: "Georgia, serif", fontSize: 24, fontWeight: 700, color: "#111", margin: "0 0 12px" }}>Ubicación</h3>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#888", fontFamily: "sans-serif", fontSize: 14, marginBottom: 16 }}>
+            <Icon name="pin" size={14} color="#888" />{p.location}
+          </div>
+          <div style={{ background: "#e8f5e0", borderRadius: 12, height: 240, display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #ddd", overflow: "hidden", position: "relative" }}>
+            <iframe
+              title="map"
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(p.location)}&output=embed`}
+              style={{ width: "100%", height: "100%", border: "none" }}
+            />
+            <a href={`https://maps.google.com/?q=${encodeURIComponent(p.location)}`} target="_blank" rel="noopener noreferrer"
+              style={{ position: "absolute", top: 12, right: 12, background: "#fff", border: "1px solid #ddd", borderRadius: 8, padding: "8px 14px", fontFamily: "sans-serif", fontSize: 13, color: "#333", textDecoration: "none", display: "flex", alignItems: "center", gap: 6 }}>
+              Open in Maps ↗
+            </a>
+          </div>
+        </div>
 
-        // HEADER SCROLL
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            header.style.boxShadow = window.pageYOffset > 50 ? '0 10px 30px rgba(0,0,0,0.08)' : 'none';
-        });
+        {/* Similar */}
+        {similar.length > 0 && (
+          <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "0 16px 56px" : "0 48px 80px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+              <h3 style={{ fontFamily: "Georgia, serif", fontSize: 28, fontWeight: 700, color: "#111", margin: 0 }}>{t(lang, "similar_properties")}</h3>
+              <button onClick={() => navigate("propiedades")} style={{ background: "none", border: "none", cursor: "pointer", color: G, fontFamily: "sans-serif", fontSize: 14, fontWeight: 600 }}>Ver todas</button>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+              {similar.map(sp => <PropCard key={sp.id} p={sp} navigate={navigate} />)}
+            </div>
+          </div>
+        )}
+      </div>
+      <Footer navigate={navigate} lang={lang} />
+    </div>
+  );
+}
 
-        window.onload = () => renderizar();
-    </script>
+// ─── MAIN APP ─────────────────────────────────────────────────────────────────
+
+function App() {
+  const [page, setPage] = useState("home");
+  const [selected, setSelected] = useState(null);
+  const [searchFilters, setSearchFilters] = useState(null);
+  const [lang, setLang] = useState(detectLang());
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title = lang === "en" ? "Natural Homes HN | Real Estate" : "Natural Homes HN | Bienes Raíces";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", lang === "en" ? "Natural Homes HN - Real estate in Honduras" : "Natural Homes HN - Bienes raíces en Honduras");
+  }, [lang]);
+
+  const navigate = (p, prop = null) => {
+    setPage(p);
+    setSelected(prop);
+    window.scrollTo?.({ top: 0, behavior: "smooth" });
+  };
+
+  const isHome = page === "home";
+
+  return (
+    <div style={{ minHeight: "100vh", background: "#fff", overflowX: "hidden" }}>
+      <style>{`
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body, #root { width: 100%; overflow-x: hidden; }
+        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #2A5C14; border-radius: 3px; }
+        input::placeholder, textarea::placeholder { color: #aaa; }
+        select option { color: #000; background: #fff; }
+        img { max-width: 100%; }
+      `}</style>
+      <Navbar page={page} navigate={navigate} transparent={isHome} lang={lang} />
+      {page === "home" && <HomePage navigate={navigate} lang={lang} onSearch={setSearchFilters} />}
+      {page === "propiedades" && <PropiedadesPage navigate={navigate} lang={lang} initialFilters={searchFilters} />}
+      {page === "nosotros" && <NosotrosPage navigate={navigate} lang={lang} />}
+      {page === "servicios" && <ServiciosPage navigate={navigate} lang={lang} />}
+      {page === "testimonios" && <TestimoniosPage navigate={navigate} lang={lang} />}
+      {page === "contacto" && <ContactoPage navigate={navigate} lang={lang} />}
+      {page === "propiedad" && selected && <PropiedadPage property={selected} navigate={navigate} lang={lang} />}
+    </div>
+  );
+}
+
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+  </script>
 </body>
 </html>
