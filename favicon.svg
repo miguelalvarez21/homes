@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" fill="#050505"/>
+  <g fill="none" stroke="#b89a4a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M34 62V43L64 20l30 23v19"/>
+    <path d="M44 62V48h20v14"/>
+    <path d="M64 62V48h20v14"/>
+    <path d="M78 54c18-2 27-13 34-29-19 4-30 14-34 29z"/>
+    <path d="M80 54c-3 10-9 17-19 22"/>
+  </g>
+  <g fill="#b89a4a" font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="64" y="92" font-size="19" font-weight="700" letter-spacing="1">NATURAL</text>
+    <text x="64" y="110" font-size="10" font-weight="700" letter-spacing="3">HOMES HN</text>
+  </g>
+</svg>
